@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+div {
+	margin: 20px;
+}
+
+hr {
+	margin: 20px 0;
+	border: 0px;
+	border-bottom: 1px solid #DDD;
+}
+
+/* body {
+	background-image:
+		url("https://images.pexels.com/photos/457881/pexels-photo-457881.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=750&w=1260");
+	background-size: cover;
+	background-repeat: no-repeat;
+} */
+/*container */
+#container {
+	width: 960px;
+	margin: 20px auto;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+/* header */
+#header {
+	height: 50px;
+	padding: 0 20px;
+	border-bottom: 1px solid #DDD;
+}
+
+#header>h1 {
+	line-height: 50px;
+}
+
+/* navbar */
+#navbar {
+	border-bottom: 1px solid #DDD;
+	height: 30px;
+}
+
+#navbar ul {
+	width: 350px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#navbar li {
+	padding: 5px 15px;
+	list-style: none;
+	float: left;
+	line-height: 10px;
+}
+
+/* content */
+#content {
+	padding: 30px;
+}
+
+/* login */
+#content h3 {
+	text-align: center;
+}
+
+#content table {
+	margin: 0 auto;
+}
+
+/* footer */
+#footer {
+	padding: 30px;
+	border-top: 1px solid #DDD;
+}
