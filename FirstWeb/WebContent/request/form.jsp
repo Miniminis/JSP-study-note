@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Form Parameter Practice</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <style></style>
 </head>

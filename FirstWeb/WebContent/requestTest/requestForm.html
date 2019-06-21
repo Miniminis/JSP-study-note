@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href="default.css" rel="stylesheet" type="text/css">
+<style>
+</style>
+</head>
+<body>
+	<div id="container">
+		<h2>request 테스트 폼</h2>
+		<hr>
+		<!--form: action 부분은 생략가능!- 현재페이지 재로딩 
+		method: 항상 post (데이터 전달 및 공유를 위해)-->
+		<form action="requestProcess.jsp" method="post">
+			<table>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>직업</td>
+					<td><select name="job">
+							<option value="무직">무직</option>
+							<option value="개발자">개발자</option>
+							<option value="학생">학생</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>관심분야</td>
+					<td><input type="checkbox" name="interest" value="정치">정치<br>
+						<input type="checkbox" name="interest" value="사회">사회<br>
+						<input type="checkbox" name="interest" value="정보통신">정보통신</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="확인"> <input
+						type="reset" value="취소"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

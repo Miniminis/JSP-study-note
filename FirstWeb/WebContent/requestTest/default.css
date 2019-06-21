@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+/*초기 전체설정  */
+* {
+	background-color: bisque;
+}
+hr {
+	border: 1px solid salmon;
+}
+input[type="submit"], input[type="reset"] {
+	width: 150px;
+	padding: 10px;
+	line-height: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: salmon;
+}
+
+
+/* div - container */
+#container {
+	width: 600px;
+	margin: 50px auto;
+	padding: 20px;
+	border: 5px solid salmon;
+	border-radius: 10px;
+	/* background-color: white; */
+}
+#container h2 {
+	text-align: center;
+}
+
+
+/* table */
+#container table {
+	width: 400px;
+	margin: 20px auto;
+	border-collapse: collapse;
+}
+#container table td {
+	border: 1px solid black;
+	padding: 10px;
+}
+
+
+/*button row - center*/
+#container table tr:last-child {
+	text-align: center;
+}

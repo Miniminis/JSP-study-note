@@ -1,3 +1,4 @@
+<%@page import="web.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,8 +18,18 @@
 	- 단, URL 은 그대로 A page @-->
 	
 	<br>
-	no parameter 값: <%= request.getParameter("NO") %>
+	<%-- no parameter 값: <%= request.getParameter("NO") %>
 	<br>
-	username parameter 값: <%= request.getParameter("USERNAME") %>
+	username parameter 값: <%= request.getParameter("USERNAME") %> --%>
+	
+	<%
+		Member member = (Member)request.getAttribute("result");
+	%>
+	
+	<%= member %><br>
+	아이디: <%= member.getId() %><br>
+	이름: <%= member.getName() %><br>
+	전화번호: <%= member.getPnum() %><br>
+	<a href="../session/viewSession.jsp">session view</a>
 </body>
 </html>

@@ -48,7 +48,8 @@
 		Enumeration params = request.getParameterNames();
 		while (params.hasMoreElements()) {
 
-			String pName = (String) params.nextElement(); /* object type String 으로 형변환 */
+			String pName = (String) params.nextElement();
+			/* object type String 으로 형변환 */
 	%>
 	<%=pName%>
 
@@ -56,14 +57,17 @@
 		}
 	%><br>
 
-	<h3>request.getParameterMap(): String[] 형태도 저장됨</h3>
+	<h3>request.getParameterMap(): String[] 형태로 저장됨</h3>
 	<%
 		Map parameterMap = request.getParameterMap();
 		String[] nameParam = (String[]) parameterMap.get("pet");
 		if (nameParam != null) {
 	%>
-		name = <%= nameParam[1] %>
-	<%	} %>
+	name =
+	<%=nameParam[1]%>
+	<%
+		}
+	%>
 
 </body>
 </html>

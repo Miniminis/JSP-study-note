@@ -1,3 +1,4 @@
+<%@page import="web.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!--@ page.jsp 의 용도: 응답페이지 컨트롤 A or B or C @-->
@@ -7,6 +8,12 @@
 	String pType = request.getParameter("type");
 	String no = request.getParameter("no"); //no: 숫자, String no: 문자열 
 	String username = request.getParameter("username");
+	
+	Member member = new Member(username, pType, no);
+	
+	request.setAttribute("result", member);
+	
+	session.setAttribute("result", member);
 
 	/* java.lang.NullPointerException 예방
 	- 파라미터의 이름이 제대로 전달되지 않은 경우, 
@@ -25,22 +32,15 @@
 	if (pType.equals("a")) {
 %>
 
-<jsp:forward page="a.jsp">
-	<jsp:param value="<%=no%>" name="NO" />
-	<jsp:param value="<%=username%>" name="USERNAME" />
-</jsp:forward>
+<jsp:forward page="a.jsp"/>
 <%
 	} else if (pType.equals("b")) {
 %>
-<jsp:forward page="b.jsp">
-	<jsp:param value="<%=no%>" name="NO" />
-	<jsp:param value="<%=username%>" name="USERNAME" />
-</jsp:forward><%
+<jsp:forward page="b.jsp"/>
+<%
 	} else {
 %>
-<jsp:forward page="c.jsp">
-	<jsp:param value="<%=no%>" name="NO" />
-	<jsp:param value="<%=username%>" name="USERNAME" />
-</jsp:forward><%
+<jsp:forward page="c.jsp"/>
+<%
 	}
 %>
