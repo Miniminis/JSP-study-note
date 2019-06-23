@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div id="header">
-	<h1>주토피아 스포츠센터 회원관리</h1>
+	<div class="inner">
+		<h3 class="brand">스토리 아프리카</h3>
+		<!-- navbar start -->
+		<%@ include file="navbar.jsp"%>
+		<!-- navbar end  -->
+	</div>
 </div>

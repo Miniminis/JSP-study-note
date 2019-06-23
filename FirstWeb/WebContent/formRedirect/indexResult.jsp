@@ -15,8 +15,8 @@
 		type: <%=request.getParameter("type")%><br>
 		name: <%=request.getParameter("name")%><br>
 		code: <%= request.getAttribute("code") %><br>
-		forward-type: <%= request.getAttribute("type") %><br>
-		forward-name: <%= request.getAttribute("name") %><br>
+		type(getAttribute): <%= request.getAttribute("type") %><br>
+		name(getAttribute): <%= request.getAttribute("name") %><br>
 	</h1>
 </body>
 </html>

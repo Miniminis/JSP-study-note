@@ -4,25 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주토피아 스포츠센터 회원관리</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>스토리 아프리카 관리자 페이지</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="css/default.css" rel="stylesheet" type="text/css">
 <style></style>
 </head>
-<body>
-	<div id="container">
+<body class="text-center">
+	<div class="container">
 		<!-- header start -->
 		<%@ include file="frame/header.jsp"%>
 		<!-- header end -->
 
-		<!-- navbar start -->
-		<%@ include file="frame/navbar.jsp"%>
-		<!-- navbar end  -->
-
 		<!-- content start -->
-		<div id="content">
-			<h1>Main Page</h1>
+		<div id="content" class="inner">
+			<h3>당신의 아프리카 이야기를 들려주세요</h3>
+			<p>mainpagemainpagemainpagemainpagemainpagemainpagemainpagemainpage
+			mainpagemainpagemainpagemainpagemainpagemainpagemainpagemainpagemainpage
+			mainpagemainpagemainpagemainpagemainpagemainpagemainpagemainpage</p>
 		</div>
+		<input type="button" value ="더 알아보기" class="btn btn-warning btn-lg"/>
 		<!-- content end -->
 
 		<!-- footer start  -->

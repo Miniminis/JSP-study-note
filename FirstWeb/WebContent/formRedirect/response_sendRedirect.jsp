@@ -14,7 +14,10 @@
 </html>
 <%
 	request.setAttribute("code", "code-1");
+	request.setAttribute("name", request.getParameter("redirect"));
+	request.setAttribute("type", "request-type");
 
-	String name = request.getParameter("redirect");
-	response.sendRedirect("indexResult.jsp?type=redirect-type");
+	/* String name = request.getParameter("redirect");
+	response.sendRedirect("indexResult.jsp?type=redirect-type"); */
 %>
+<jsp:forward page="indexResult.jsp"/>
