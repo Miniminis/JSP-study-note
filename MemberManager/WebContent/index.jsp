@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!--1순위 에러 페이지 지정  -->
+<%@ page errorPage="errorPage/defaultErrorPage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

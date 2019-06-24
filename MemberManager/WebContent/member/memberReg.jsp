@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="regData" class="member.MemberInfo" scope="request" />
+<jsp:setProperty property="*" name="regData" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +18,13 @@
 <style></style>
 </head>
 <body class="text-center">
-	<%
+
+	<%-- <%
 		request.setCharacterEncoding("utf-8");
 		String userid = request.getParameter("uid");
 		String userpassword = request.getParameter("upw");
 		String username = request.getParameter("uname");
-	%>
+	%> --%>
 	<div class="container">
 
 		<!-- header start -->
@@ -26,27 +33,14 @@
 
 		<!-- content start -->
 		<div id="content" class="inner">
-			<h3>회원가입 요청 처리페이지</h3>
-			<table>
-				<tr>
-					<td><input type="email" name="uid" placeholder="아이디"
-						value="<%=userid%>" class="form-control"></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="upw" placeholder="비밀번호"
-						value="<%=userpassword%>" class="form-control"></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="uname" placeholder="이름"
-						value="<%=username%>" class="form-control"></td>
-				</tr>
-				<tr>
-					<td>사진</td>
-				</tr>
-				<tr>
-					<td><input type="file" name="uphoto"></td>
-				</tr>
-			</table>
+			<h3>등록된 정보는 다음과 같습니다.</h3>
+			<form class="formwrap">
+				<input type="email" name="uid" placeholder="아이디" value="<%=regData.getUserid()%>" class="form-control"> 
+				<input type="password" name="upw" placeholder="비밀번호" value="<%=regData.getUserpw()%>" class="form-control"> 
+				<input type="text" name="uname" placeholder="이름" value="<%=regData.getUsername()%>" class="form-control">
+				<div> 사진 <input type="file" name="uphoto"></div>
+				<a href="<%= request.getContextPath()%>/index.jsp" class="btn btn-warning btn-lg">홈으로 돌아가기</a>
+			</form>
 		</div>
 		<!-- content end -->
 

@@ -33,6 +33,7 @@ body {
 }
 #navbar a {
 	margin-left: 10px;
+	color: white;
 }
 
 /* content */
@@ -41,12 +42,9 @@ body {
 	max-width: 330px;
 	margin: 0 auto;
 }
-
-#form div {
+form input {
 	margin: 10px 0;
 }
-
-
 
 /* footer */
 #footer {

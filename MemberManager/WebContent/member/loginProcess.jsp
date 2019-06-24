@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- request로 form 값을 전달받기 전에   -->
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session" />
+<jsp:setProperty property="*" name="loginInfo" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +18,8 @@
 <style></style>
 </head>
 <body class="text-center">
-	<%
+	<%-- <%
+	
 		String userid = request.getParameter("uid");
 		String userpassword = request.getParameter("upw");
 
@@ -20,7 +27,7 @@
 				&& userid.equals("admin") && userpassword.equals("admin")) {
 			response.sendRedirect(request.getContextPath()); //  /mm
 		}
-	%>
+	%> --%>
 	<div class="container">
 
 		<!-- header start -->
@@ -29,17 +36,13 @@
 
 		<!-- content start -->
 		<div id="content" class="inner">
-			<h3>로그인 요청처리 페이지</h3>
-			<table>
-				<tr>
-					<td><input type="text" name="uid" placeholder="아이디"
-						value="<%=userid%>" class="form-control"></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="password" placeholder="비밀번호"
-						value="<%=userpassword%>"class="form-control"></td>
-				</tr>
-			</table>
+			<form class="formwrap">
+				<h3><%=loginInfo.getUserid()%>님, 환영합니다! </h3>
+				<input type="text" name="userid" placeholder="아이디" 
+					value="<%=loginInfo.getUserid()%>" class="form-control"> 
+				<input type="text" name="userpw" placeholder="비밀번호"
+					value="<%=loginInfo.getUserpw()%>" class="form-control">
+			</form>
 		</div>
 		<!-- content end -->
 

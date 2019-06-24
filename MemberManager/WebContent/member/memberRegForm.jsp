@@ -21,26 +21,11 @@
 		<div id="content" class="inner">
 			<form action="memberReg.jsp" method="post" class="formwrap">
 				<h3>회원가입</h3>
-				<div>
-					<input type="email" name="uid" placeholder="아이디(이메일)"
-						class="form-control" required>
-				</div>
-				<div>
-					<input type="password" name="upw" placeholder="비밀번호"
-						class="form-control" required>
-				</div>
-				<div>
-					<input type="text" name="uname" placeholder="이름"
-						class="form-control" required>
-				</div>
-				<div>
-					사진 <input type="file" name="uphoto">
-				</div>
-				<div>
-					<input type="submit" value="회원가입" class="btn btn-warning btn-block">
-				</div>
-				</table>
-
+				<input type="email" name="userid" placeholder="아이디(이메일)" class="form-control" required> 
+				<input type="password" name="userpw" placeholder="비밀번호" class="form-control" required>
+				<input type="text" name="username" placeholder="이름" class="form-control" required> 
+				<div>사진 <input type="file" name="uphoto"></div> 
+				<input type="submit" value="회원가입" class="btn btn-warning btn-block">
 			</form>
 		</div>
 		<!-- content end -->
