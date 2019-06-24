@@ -6,11 +6,7 @@
 	<display-name>FirstWeb</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- 서블릿등록: 서블릿 이름, 서블릿 클래스 이름(패키지 명을 포함한 풀네임) -->
@@ -25,17 +21,45 @@
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
-	<!-- application 기본객체: 초기화 파라미터 -->
+	<!-- application 기본객체: 초기화 파라미터 - 프로그램 전체에서 공유 가능한 데이터의 등록! - 자주 바뀌는 값을 
+		아래와 같이 설정하게 되면 자주 바뀌는 코드를 건드리지 않고 처리 가능하다. -->
 	<context-param>
 		<description>login parameter</description>
 		<param-name>logEnabled</param-name>
 		<param-value>false</param-value>
 	</context-param>
-	
+
 	<context-param>
 		<description>debug level</description>
 		<param-name>debugLevel1</param-name>
 		<param-value>10</param-value>
 	</context-param>
+
+	<!-- 에러페이지 지정- http 코드로 - 3순위 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errorPage/viewErrorPage404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errorPage/viewErrorPage500.jsp</location>
+	</error-page>
+
+	<!--에러 타입으로 지정- 2순위 -->
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/errorPage/viewNullException.jsp</location>
+	</error-page>
+
+	<!--자동 코드 추가 설정 - 코드 수준의 모듈화 가능!!! 
+	- 단점: 원하는 위치에 알맞게 include 시킬 수 없다.-->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>/includever03/view/body.jsp</url-pattern>
+			<include-prelude>/includever03/common/variable.jspf</include-prelude>
+			<include-coda>/includever03/common/footer.jspf</include-coda>
+		</jsp-property-group>
+	</jsp-config>
 
 </web-app>

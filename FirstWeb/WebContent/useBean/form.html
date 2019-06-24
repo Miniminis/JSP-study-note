@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style></style>
+</head>
+<body>
+<form action="regUser.jsp">
+아이디: <input type="text" name="id"><br> <!-- input속의 name 값은 UserInfo class의 id 멤버변수와 같아야 한다.  -->
+비밀번호: <input type="password" name="pw"><br>
+이름: <input type="text" name="username"><br> 
+주소: <input type="text" name="address"><br>
+이메일: <input type="email" name="email"><br>
+<input type="submit" value="등록하기">
+</form>
+</body>
+</html>
+
+<!-- *** 자바 빈 
+1. 자바 빈 클래스 생성 
+- private 맴버변수 선언 
+- 생성자 - 초기화 매서드 
+	- default  
+	- 매개변수 받는 생성자 매서드 
+- setter와 getter 메서드 정의 
+- toString 오버라이딩 
+
+2. form
+- input 태그 에서 name 값(=자바 빈 클래스의 private 맴버변수와 같은 이름), value 값 설정 
+- form action="form 속의 데이터 넘길페이지"
+
+3. loginProcess 
+- request.setCharacterEncoding("utf-8");
+
+- jsp:useBean 
+id="빈즈클래스를 사용할 인스턴스 이름"
+class="빈즈클래스가 위치하는 경로"
+scope="데이터의 생명주기" (로그인은 보통 session)
+
+- jsp:setProperty 
+property="얻을 정보의 이름(빈즈 클래스의 맴버변수 or form 에서의 name 값)"
+name="빈즈클래스의 인스턴스 이름(id)"
+
+id.getMethod()를 통해서 데이터가 저장된 빈즈 클래스의 맴버변수의 값에 접근 -->
