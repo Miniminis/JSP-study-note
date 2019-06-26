@@ -5,7 +5,7 @@
 	<a href="<%=request.getContextPath() %>/member/login.jsp">로그인</a> 
 	<a href="<%=request.getContextPath() %>/member/memberRegForm.jsp">회원가입</a>
 	<a href="<%=request.getContextPath()%>/member/myPage.jsp">내정보보기</a>	
-	<a href="#">회원리스트</a>
+	<a href="<%= request.getContextPath()%>/member/memberList.jsp">회원리스트</a>
 	<a href="<%=request.getContextPath()%>/member/logout.jsp">로그아웃</a>
 </div>
 
