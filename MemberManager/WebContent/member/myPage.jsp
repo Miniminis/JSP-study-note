@@ -1,11 +1,19 @@
+<%@page import="member.LoginInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="loginInfo" class="member.MemberInfo" scope="session" />
+
+<%
+	request.setCharacterEncoding("utf-8");
+
+	LoginInfo loginInfo = (LoginInfo)session.getAttribute("LOGININFO");
+	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이 페이지</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,11 +30,18 @@
 		<!-- content start -->
 		<div id="content" class="inner">
 			<form class="formwrap">
-				<h3><%=loginInfo.getUserid()%>님의 마이페이지입니다.</h3>
-				<input type="text" name="userid" placeholder="아이디"
-					value="<%=loginInfo.getUserid()%>" class="form-control"> <input
-					type="text" name="userpw" placeholder="비밀번호"
-					value="<%=loginInfo.getUserpw()%>" class="form-control">
+			
+			<%
+				//out.println(loginInfo.getUserid());
+				if(loginInfo != null) {			
+					out.print("<img src=\"../image/"+loginInfo.getUphoto()+"\"<br>");
+					out.print("<h4>"+loginInfo.getUserid()+"</h4><br>");
+					out.print("아이디 <input type=\"text\" value="+loginInfo.getUserid()+" class=\"form-control\"><br>");
+					out.print("이름 <input type=\"text\" value="+loginInfo.getUsername()+" class=\"form-control\"><br>");
+				} else {
+					out.print("<script>alert('로그인이 필요한 페이지입니다!'); location.href=\"login.jsp\";</script>");
+				}
+			%>
 			</form>
 		</div>
 		<!-- content end -->

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* General setting */
+
 body {
 	background-color: black;
 }
@@ -16,8 +17,13 @@ body {
 
 .container {
 	margin: 0 auto;
-	width: 720px;
+	width: 900px;
 	padding: 10px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
 }
 
 /* header */
@@ -33,18 +39,19 @@ body {
 }
 #navbar a {
 	margin-left: 10px;
-	color: white;
 }
 
 /* content */
+
 .formwrap {
 	width: 100%;
-	max-width: 330px;
+	max-width: 350px;
 	margin: 0 auto;
 }
 form input {
 	margin: 10px 0;
 }
+
 
 /* footer */
 #footer {
