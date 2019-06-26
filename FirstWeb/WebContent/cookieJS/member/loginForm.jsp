@@ -42,7 +42,7 @@
 					//alert($('#saveID').prop('checked','checked'););
 					
 					if(getCookie("AUTOLOGIN")!=null) {
-						$('#id').attr('placeholder', getCookie("ID"));
+						$('#id').attr('value', getCookie("ID"));
 						$('#saveID').prop('checked','checked');
 					}
 				});

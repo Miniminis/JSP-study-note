@@ -10,7 +10,8 @@
 </head>
 <body>
 	<%
-		request.getSession(false).invalidate();
+		//request.getSession(false).invalidate(); //현재 세션의 값을 false 로 불러와서 invalidate() 처리
+		session.invalidate(); //세션의 종료
 	%>
 	
 	<h2>로그아웃 되었습니다 ㅠㅠㅠㅠㅠ </h2>

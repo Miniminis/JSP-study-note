@@ -13,6 +13,8 @@
 	<h1>Session을 이용한 데이터 저장</h1>
 
 	<%
+		//KING - object 타입 
+		//--> name, id, isLogin, age 를 포함하는 클래스를(UserInfo) 생성해서 Object를 넣어주는 방식으로 사용하게 됨
 		session.setAttribute("name", "KING");
 		session.setAttribute("id", "tiger");
 		session.setAttribute("isLogin", true);
