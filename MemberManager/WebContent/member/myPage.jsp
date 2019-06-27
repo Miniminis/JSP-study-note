@@ -8,7 +8,6 @@
 	LoginInfo loginInfo = (LoginInfo)session.getAttribute("LOGININFO");
 	
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +29,8 @@
 		<!-- content start -->
 		<div id="content" class="inner">
 			<form class="formwrap">
-			
+			${sessionScope.LOGININFO}
+			<!-- Map.get("LOGININFO")  -->
 			<%
 				//out.println(loginInfo.getUserid());
 				if(loginInfo != null) {			
@@ -42,6 +42,9 @@
 					out.print("<script>alert('로그인이 필요한 페이지입니다!'); location.href=\"login.jsp\";</script>");
 				}
 			%>
+			${sessionScope.LOGININFO.uphoto}<br>
+			${sessionScope.LOGININFO.userid }<br>
+			${LOGININFO.username }<br>
 			</form>
 		</div>
 		<!-- content end -->

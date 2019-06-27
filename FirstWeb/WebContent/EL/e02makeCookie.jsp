@@ -63,6 +63,6 @@
 		<%=ck4.getValue()%></h2>
 	<br>
 
-	<a href="viewCookies.jsp">쿠키 view 결과 바로가기</a>
+	<a href="e02viewCookies.jsp">쿠키 view 결과 바로가기</a>
 </body>
 </html>

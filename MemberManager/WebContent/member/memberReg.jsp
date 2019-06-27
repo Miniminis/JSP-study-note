@@ -49,15 +49,15 @@
 			<h3>등록된 정보는 다음과 같습니다.</h3>
 			<form class="formwrap">
 				<input type="email" name="uid" placeholder="아이디"
-					value="<%=regData.getUserid()%>" class="form-control"> <input
-					type="password" name="upw" placeholder="비밀번호"
-					value="<%=regData.getUserpw()%>" class="form-control"> <input
-					type="text" name="uname" placeholder="이름"
-					value="<%=regData.getUsername()%>" class="form-control">
+					value="${regData.userid}" class="form-control"> 
+				<input type="password" name="upw" placeholder="비밀번호"
+					value="${regData.userpw }" class="form-control"> 
+				<input type="text" name="uname" placeholder="이름"
+					value="${regData.username}" class="form-control">
 				<div>
 					사진 <input type="file" name="uphoto">
 				</div>
-				<a href="<%=request.getContextPath()%>/member/login.jsp"
+				<a href="${pageContext.request.contextPath}/member/login.jsp"
 					class="btn btn-warning btn-lg">로그인 하기</a>
 				<a href="<%=request.getContextPath()%>/index.jsp"
 					class="btn btn-warning btn-lg">홈으로 돌아가기</a>
