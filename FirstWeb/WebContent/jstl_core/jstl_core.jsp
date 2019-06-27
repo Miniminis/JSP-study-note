@@ -47,8 +47,8 @@
 			<td>아이디</td>
 			<td>전화번호</td>
 		</tr>
-		<c:forEach items="${members}" var="member" varStatus="status" begin="0" end="3">
-		<!-- member: 각각의 맴버 객체를 가리킨다. -->
+		<c:forEach var="member" items="${members}" varStatus="status" begin="0" end="3">
+		<!-- member: 각각의 맴버 객체(name, id, phnum 을 가지는!)를 가리킨다. -->
 		<tr>
 			<td>${status.index} / ${status.count}</td> <!--count는 1부터 시작, index는 0부터 시작  -->
 			<td>${member.name }</td> <%-- <c:out value="${member.name}"/> --%>
@@ -59,15 +59,16 @@
 					<span style="color: red">존재하는 전화번호가 없습니다.</span>
 				</c:out>
 			</td>
+			<!--만약 이름과 아이디는 필수사항이고, 이메일은 선택사항이면
+				이름, 아이디는 EL을 이용해서 간단히 출력하고 
+				이메일은 존재하지 않을 수 있으므로 out 객체를 이용해서 default 값 설정 및 출력을 해준다.  -->
 		</tr>
 		</c:forEach>
 		
 		<!-- forTokens -->
 		<c:forTokens items="홍길동, 010-1111-2222,서울" delims="," var="sel">
 			${sel}<br>
-		</c:forTokens>
-		<br>
-		
+		</c:forTokens>		
 	</table>
 </body>
 </html>

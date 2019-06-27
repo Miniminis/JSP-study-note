@@ -20,8 +20,10 @@
 </head>
 <body>
 	<h3>
+		pageContext: ${pageContext.request.requestURI};<br>
 		request 영역의 name01 : ${requestScope.name01}<br> 
 								<%= request.getAttribute("name01") %><br>
+								
 		session 영역의 name02: ${sessionScope.name02}<br>
 		application 영역의 name03 : ${applicationScope.name03}
 	</h3>

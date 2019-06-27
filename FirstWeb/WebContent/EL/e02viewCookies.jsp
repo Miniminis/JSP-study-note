@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<%-- <%
 	//브라우저가 요청할때, 모든 쿠키 정보를 함께 서버로 전송한다. 
 	Cookie[] cookies = request.getCookies();
-%>
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,14 +21,14 @@
 	
 	<h3>
 		EL을 이용한 Cookie 참조<br>
-		title: ${cookie.title.value}<br>
+		title: ${cookie.title.name}<br>
 		id: ${cookie.id.value}<br>
 		username: ${cookie.username.value}<br>
 		code: ${cookie.code.value}<br>
 	</h3>
 	
 	<hr>
-	<h1>Cookie 값을 가져오기 위한 반복문</h1>
+	<%-- <h1>Cookie 값을 가져오기 위한 반복문</h1>
 	<%
 		if (cookies != null && cookies.length > 0) {
 			for (int i = 0; i < cookies.length; i++) {
@@ -42,7 +42,7 @@
 				//}				
 			}
 		}
-	%>
+	%> --%>
 
 	<a href="editCookie.jsp">쿠키 edit 결과 바로가기</a><br>
 	<a href="deleteCookie.jsp">쿠키 delete 결과 바로가기</a>

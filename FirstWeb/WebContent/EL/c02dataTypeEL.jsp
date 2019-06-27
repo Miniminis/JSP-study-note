@@ -50,9 +50,14 @@
 		${true && true }<br>
 		${true || true }<br>
 		${!true }<br>
+		
 		${true and true }<br>
 		${true or true }<br>
 		${not true }<br>
+		
+		<hr>
+		empty 연산자:<br>
+		${empty ""}
 		
 	</h3>
 </body>
