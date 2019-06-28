@@ -13,8 +13,11 @@
 <body>
 	
 	<c:set value="test" var="msg"/>
-	msg: ${msg} <br>
+	msg set result: ${msg} <br>
+	<c:remove var="msg"/>
+	msg remove result: ${msg} <br>
 	
+	<c:set value="test" var="msg"/>
 	<c:if test="${msg eq 'test'}">
 		msg 의 문자열은 test와 같습니다.
 	</c:if>
