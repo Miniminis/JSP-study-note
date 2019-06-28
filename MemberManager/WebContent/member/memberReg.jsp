@@ -48,15 +48,13 @@
 		<div id="content" class="inner">
 			<h3>등록된 정보는 다음과 같습니다.</h3>
 			<form class="formwrap">
-				<input type="email" name="uid" placeholder="아이디"
-					value="${regData.userid}" class="form-control"> 
-				<input type="password" name="upw" placeholder="비밀번호"
-					value="${regData.userpw }" class="form-control"> 
-				<input type="text" name="uname" placeholder="이름"
-					value="${regData.username}" class="form-control">
+				<input type="email" value="${regData.userid}" class="form-control"> 
+				<input type="password" value="${regData.userpw }" class="form-control"> 
+				<input type="text" value="${regData.username}" class="form-control">
 				<div>
 					사진 <input type="file" name="uphoto">
 				</div>
+				
 				<a href="${pageContext.request.contextPath}/member/login.jsp"
 					class="btn btn-warning btn-lg">로그인 하기</a>
 				<a href="<%=request.getContextPath()%>/index.jsp"

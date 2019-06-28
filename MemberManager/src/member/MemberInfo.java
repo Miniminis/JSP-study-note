@@ -1,6 +1,7 @@
 package member;
 
 import java.io.File;
+import java.util.Date;
 
 public class MemberInfo {
 	/* form 내부의 input 태그의 name 속성과 같은 변수이름을 사용해야 한다!!!! */
@@ -8,9 +9,10 @@ public class MemberInfo {
 	private String userpw;
 	private String username;
 	private String uphoto;
+	private Date regDate;
 	
 	public MemberInfo() {
-		
+		this.regDate = new Date();
 	}
 
 	public MemberInfo(String userid, String userpw, String username, String uphoto) {
@@ -18,6 +20,7 @@ public class MemberInfo {
 		this.userpw = userpw;
 		this.username = username;
 		this.uphoto = uphoto;
+		this.regDate = new Date();
 	}
 
 	public String getUserid() {
@@ -59,7 +62,7 @@ public class MemberInfo {
 	
 	//MemberInfo 객체에서 LoginIngo 객체로 반환
 	public LoginInfo toLoginInfo() {
-		LoginInfo loginInfo = new LoginInfo(userid, username,uphoto);
+		LoginInfo loginInfo = new LoginInfo(userid, username,uphoto, regDate);
 		
 		return loginInfo;
 	}

@@ -8,14 +8,14 @@
 	LoginInfo loginInfo = (LoginInfo)session.getAttribute("LOGININFO");
 	
 %>
+${logininfo}
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이 페이지</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="../css/default.css" rel="stylesheet" type="text/css">
 <style></style>
 </head>

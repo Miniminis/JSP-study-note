@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="navbar">
-	<a href="${pageContext.request.contextPath}">홈</a>
-	<a href="${pageContext.request.contextPath}/member/login.jsp">로그인</a> 
-	<a href="${pageContext.request.contextPath}/member/memberRegForm.jsp">회원가입</a>
-	<a href="${pageContext.request.contextPath}/member/myPage.jsp">내정보보기</a>	
-	<a href="${pageContext.request.contextPath}/member/memberList.jsp">회원리스트</a>
-	<a href="${pageContext.request.contextPath}/member/logout.jsp">로그아웃</a>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div id="navbar" class="nav nav-masthead justify-content-center">
+	<a class="nav-link active" href="<c:url value='/'/>">홈</a>
+	<a class="nav-link" href="<c:url value='/member/login.jsp'/>">로그인</a> 
+	<a class="nav-link" href="<c:url value='/member/memberRegForm.jsp'/>">회원가입</a>
+	<a class="nav-link" href="<c:url value='/member/myPage2.jsp'/>">내정보보기2</a>	
+	<a class="nav-link" href="<c:url value='/member/memberList2.jsp'/>">회원리스트2</a>
+	<a class="nav-link" href="<c:url value='/member/logout.jsp'/>">로그아웃</a>
 </div>
 
 <!-- 네비게이션 바를 include 를 통해서 불러올때에는 
