@@ -1,7 +1,7 @@
 <%@page import="member.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -11,7 +11,7 @@
 
 <%
 	if (regData.getUphoto() == null) {
-		regData.setUphoto(""+request.getContextPath()+"/image/noImg.jpg");
+		regData.setUphoto("<c:url value='/image/noimg.png'/>");
 	}
 
 	//어플리케이션 객체에 저장
@@ -25,11 +25,29 @@
 <meta charset="UTF-8">
 <title>회원가입결과</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<style></style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../static/login.css" rel="stylesheet" type="text/css">
+<style>
+	.form-signin input[type="password"] {
+	  margin-bottom: -1px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+	.form-signin input[type="text"] {
+	  margin-bottom: 10px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+	.form-signin input[type="button"] {
+	  margin-bottom: 5px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+</style>
 </head>
+
 <body class="text-center">
 
 	<%-- <%
@@ -38,34 +56,31 @@
 		String userpassword = request.getParameter("upw");
 		String username = request.getParameter("uname");
 	%> --%>
-	<div class="container">
 
-		<!-- header start -->
-		<%@ include file="../frame/header.jsp"%>
-		<!-- header end -->
-
-		<!-- content start -->
-		<div id="content" class="inner">
-			<h3>등록된 정보는 다음과 같습니다.</h3>
-			<form class="formwrap">
-				<input type="email" value="${regData.userid}" class="form-control"> 
-				<input type="password" value="${regData.userpw }" class="form-control"> 
-				<input type="text" value="${regData.username}" class="form-control">
-				<div>
-					사진 <input type="file" name="uphoto">
-				</div>
-				
-				<a href="${pageContext.request.contextPath}/member/login.jsp"
-					class="btn btn-warning btn-lg">로그인 하기</a>
-				<a href="<%=request.getContextPath()%>/index.jsp"
-					class="btn btn-warning btn-lg">홈으로 돌아가기</a>
-			</form>
-		</div>
-		<!-- content end -->
-
-		<!-- footer start  -->
-		<%@ include file="../frame/footer.jsp"%>
-		<!-- footer end -->
-	</div>
+	<!-- content start -->
+	<form action="memberReg.jsp" method="post" class="form-signin">	
+		<img class="mb-4" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
+		<h4 class="mb-3 font-weight-normal">회원가입이 완료되었습니다</h4>
+		
+		<label for="inputEmail" class="sr-only">이메일 주소(아이디)</label>
+		<input type="email" value="${regData.userid}" class="form-control">
+		
+		<label for="inputPassword" class="sr-only">비밀번호</label>
+		<input type="password" value="${regData.userpw}" class="form-control" >
+		
+		<label for="inputUsername" class="sr-only">이름</label>
+		<input type="text" value="${regData.username}" class="form-control">
+		
+		<label class="sr-only">
+			사진 
+			<input type="file" name="uphoto" class="form-control">
+		</label>
+		
+	   	<a href="<c:url value='/member/login.jsp'/>"><input type="button" value="로그인하기 " class="btn btn-lg btn-primary btn-block" ></a>
+ 		<a href="<c:url value='/'/>"><input type="button" value="홈으로 " class="btn btn-lg btn-primary btn-block" ></a>
+ 		
+ 		<p class="mt-5 mb-3 text-muted">&copy; 2019</p>	
+	</form>
+	<!-- content end -->		
 </body>
 </html>

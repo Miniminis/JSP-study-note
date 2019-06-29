@@ -26,7 +26,7 @@
 		session.setAttribute("LOGININFO", memberInfo.toLoginInfo());
 		
 		//로그인 처리 후, 바로 메인페이지로 이동!
-		response.sendRedirect(""+request.getContextPath()+"/member/myPage.jsp");
+		response.sendRedirect(""+request.getContextPath()+"/member/myPage2.jsp");
 		//loginChk = true;
 	} else {
 		//3. 존재하지 않는다: 오류메시지 전달 --> 로그인 페이지로 이동

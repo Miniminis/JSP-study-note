@@ -8,11 +8,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" 
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>스토리 아프리카 관리자 페이지</title>
+<title>스토리 아프리카</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="static/default.css" rel="stylesheet" type="text/css">

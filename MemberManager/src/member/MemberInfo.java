@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Date;
 
 public class MemberInfo {
-	/* form ³»ºÎÀÇ input ÅÂ±×ÀÇ name ¼Ó¼º°ú °°Àº º¯¼öÀÌ¸§À» »ç¿ëÇØ¾ß ÇÑ´Ù!!!! */
+	/* form ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ input ï¿½Â±ï¿½ï¿½ï¿½ name ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½!!!! */
 	private String userid;
 	private String userpw;
 	private String username;
@@ -54,13 +54,19 @@ public class MemberInfo {
 	public void setUphoto(String uphoto) {
 		this.uphoto = uphoto;
 	}
+	
+
+	public Date getRegDate() {
+		return regDate;
+	}
+
 
 	@Override
 	public String toString() {
 		return "MemberInfo [userid=" + userid + ", userpw=" + userpw + ", username=" + username + "]";
 	}
 	
-	//MemberInfo °´Ã¼¿¡¼­ LoginIngo °´Ã¼·Î ¹ÝÈ¯
+	//MemberInfo ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ LoginIngo ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯
 	public LoginInfo toLoginInfo() {
 		LoginInfo loginInfo = new LoginInfo(userid, username,uphoto, regDate);
 		

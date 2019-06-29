@@ -16,68 +16,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>회원 목록</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<style>
-table {
-	margin: 0 auto;
-	width: 80%;
-	border: 0;
-	border-collapse: collapse;
-}
 
-table td {
-	padding: 3px;
-	border: 1px solid white:
-}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../static/default.css" rel="stylesheet" type="text/css">
+
+<style>
+	.mb-auto {
+		margin-bottom: 50px!important;
+	}
+	.table {
+		color: #fff;
+	}
 </style>
 </head>
 <body class="text-center">
-	<div class="container">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<!-- header start -->
 		<%@ include file="../frame/header.jsp"%>
 		<!-- header end -->
 
 		<!-- content start -->
-		<div id="content" class="inner">
-		<h3>회원 목록</h3>
-			<table>
-				<tr>
-					<td>순번</td>
-					<td>아이디</td>
-					<td>이름</td>
-					<td>비밀번호</td>
-					<td>이미지</td>
-					<td>관리</td>
-				</tr>
-				
-				<!--회원 리스트의 반복 시작  -->
-				<c:forEach var="mid" items="${mListName}" varStatus="status">
-				
-				<!--  -->
-				<c:if test="${fn:contains(mid, '@')}">
-				
-				<c:set var="member" value="${applicationScope[mid]}"/>	
-				<!-- application 객체 내부에 있는 값을 key mid 를 통해 직접참조!  -->
-					<tr>
-						<td>${status.count}</td>
-						<td>${member.userid}</td>
-						<td>${member.username}</td>
-						<td>${member.userpw}</td>
-						<td><img src="<%= request.getContextPath()%>/image/${member.uphoto}"></td>						
-						<td><a>수정</a>	<a>삭제</a></td>
-					</tr>
-				</c:if>
-				</c:forEach>							
-				<!--회원 리스트의 반복 끝-->
+		<div id="content" role="main" class="inner cover">
+			<h3>회원 목록</h3>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">아이디(이메일)</th>
+			      <th scope="col">이름</th>
+			      <th scope="col">비밀번호</th>
+			      <th scope="col">이미지</th>
+			      <th scope="col">가입일</th> 
+			      <th scope="col">관리</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <!-- 회원리스트 반복의 시작 -->
+			  <c:forEach var="mId" items="${mListName}" varStatus="status">
+				  <c:if test="${fn:contains(mId, '@')}">
+				  
+				  <c:set var="member" value="${applicationScope[mId]}"/>
+				    <tr>
+				      <th scope="row">${status.count}</th>
+				      <td>${member.userid}</td>
+				      <td>${member.username}</td>
+				      <td>${member.userpw}</td>
+				      <td>${member.uphoto}</td>
+				      <td>${member.regDate}</td>
+				      <td><a>수정</a>    <a>삭제</a></td>
+				    </tr>
+				   </c:if>
+			   </c:forEach>
+			   <!-- 회원리스트 반복의 끝 -->
+			  </tbody>
 			</table>
 		</div>
-	</div>
-	<!-- content end -->
-
-	<!-- footer start  -->
-	<%@ include file="../frame/footer.jsp"%>
-	<!-- footer end -->
-	</div>
+		<!-- content end -->
+		
+		<!-- footer start  -->
+		<%@ include file="../frame/footer.jsp"%>
+		<!-- footer end -->
+	</div>	
 </body>
 </html>

@@ -19,7 +19,7 @@
 <body class="text-center">
 	<!-- content start -->
 	<form action="loginProcess.jsp" method="post" class="form-signin">
-		<img class="mb-4" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
+		<img class="profile-img" src="../image/zootopia_1.jpg">
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		
 		<label for="inputEmail" class="sr-only">이메일 주소(아이디)</label>

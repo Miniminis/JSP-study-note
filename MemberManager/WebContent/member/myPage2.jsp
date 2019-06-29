@@ -9,40 +9,67 @@
 <meta charset="UTF-8">
 <title>마이 페이지</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="../css/default.css" rel="stylesheet" type="text/css">
-<style></style>
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../static/default.css" rel="stylesheet" type="text/css">
+
+<style>
+	.mb-auto {
+		margin-bottom: 50px!important;
+	}
+	.table {
+		width: 100%;
+		max-width: 330px;
+		margin: 0 auto;
+		color: #fff;
+	}
+	.profile-img {
+		width: 150px;
+		height: 150px;
+		margin-bottom: 50px;
+		border-radius: 100px;
+		border: 10px solid #FAD02C;
+	}
+	
+</style>
 </head>
 <body class="text-center">
-	<div class="container">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
 		<!-- header start -->
 		<%@ include file="../frame/header.jsp"%>
 		<!-- header end -->
-
+				
 		<!-- content start -->
-		<div id="content" class="inner">
-			<form class="formwrap">		
-				<c:if test="${LOGININFO ne null}">		
-					<img src="../image/${LOGININFO.uphoto}"><br>
-					아이디 <input type="text" value="${sessionScope.LOGININFO.userid}" class="form-control"><br>	
-					이름 <input type="text" value="${LOGININFO.username}" class="form-control"><br>
-					가입일 <input type="text" value='<fmt:formatDate value="${LOGININFO.regDate}" pattern="yyyy.MM.dd. H:mm" />' class="form-control"><br>					
-				</c:if>
-					
-				<c:if test="${LOGININFO eq null }">
-					<script>
-						alert('로그인이 필요한 페이지입니다!'); 
-						location.href="login.jsp";
-					</script>
-				</c:if>
-			</form>
+		<div id="content" role="main" class="inner cover">
+			<c:if test="${sessionScope.LOGININFO ne null}">
+				<img src="<c:url value='../image/zootopia_1.jpg'/>" class="profile-img"><br>
+				<h3>내정보 보기</h3>
+				<table class="table">
+				    <tr>
+				      <th scope="col">아이디</th>
+				      <td>${sessionScope.LOGININFO.userid}</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">이름</th>
+				      <td>${sessionScope.LOGININFO.username}</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">가입일</th>
+				      <td>${sessionScope.LOGININFO.regDate}</td>
+				    </tr>	 
+				</table>
+			</c:if>
+			<c:if test="${sessionScope.LOGININFO eq null}">
+				<script>
+					alert('로그인이 필요한 페이지입니다!');
+					location.href="login.jsp";
+				</script>
+			</c:if>
+			<!-- content end -->
 		</div>
-		<!-- content end -->
-
-		<!-- footer start  -->
-		<%@ include file="../frame/footer.jsp"%>
-		<!-- footer end -->
 	</div>
 </body>
 </html>

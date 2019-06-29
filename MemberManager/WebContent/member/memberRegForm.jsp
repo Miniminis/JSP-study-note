@@ -8,11 +8,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="../static/login.css" rel="stylesheet" type="text/css">
-</head>
 <style>
 	.form-signin input[type="password"] {
 	  margin-bottom: -1px;
@@ -25,11 +23,13 @@
 	  border-top-right-radius: 0;
 	}
 </style>
+</head>
+
 
 <body class="text-center">
 	<!-- content start -->
 	<form action="memberReg.jsp" method="post" class="form-signin">
-		<img class="mb-4" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
+		<img class="profile-img" src="../image/zootopia_1.jpg">
 		<h1 class="h3 mb-3 font-weight-normal">회원가입</h1>
 
 		<label for="inputEmail" class="sr-only">이메일 주소(아이디)</label>
