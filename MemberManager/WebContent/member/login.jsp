@@ -34,7 +34,7 @@
 		    </label>
 	   </div>
 	   
-	   <input type="submit" value="로그인" class="btn btn-lg btn-primary btn-block" >
+	   <input type="submit" value="로그인" class="btn btn-lg btn-block btn-primary" >
 	   <a href="../index.jsp"><input type="button" value="홈으로" class="btn btn-lg btn-primary btn-block" ></a>
  		<p class="mt-5 mb-3 text-muted">&copy; 2019</p>				
 	</form>

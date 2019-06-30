@@ -43,7 +43,7 @@
 		}
 	%>
 
-	<h3>request.getParameterNames() 이용</h3>
+	<h3>request.getParameterNames() 이용</h3> 
 	<%
 		Enumeration params = request.getParameterNames();
 		while (params.hasMoreElements()) {
@@ -64,7 +64,7 @@
 		if (nameParam != null) {
 	%>
 	name =
-	<%=nameParam[1]%>
+	<%=nameParam[0]%>
 	<%
 		}
 	%>

@@ -10,6 +10,11 @@ body {
   background-color: #333;
   color: #fff
 }
+.btn-primary {
+	background-color: transparent;
+	border: .05rem solid #FAD02C;	
+	color: btn-primary;
+}
 
 .profile-img {
 	width: 150px;

@@ -59,7 +59,7 @@
 
 	<!-- content start -->
 	<form action="memberReg.jsp" method="post" class="form-signin">	
-		<img class="mb-4" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
+		<img class="profile-img" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
 		<h4 class="mb-3 font-weight-normal">회원가입이 완료되었습니다</h4>
 		
 		<label for="inputEmail" class="sr-only">이메일 주소(아이디)</label>

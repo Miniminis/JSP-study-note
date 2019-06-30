@@ -13,16 +13,16 @@ a:hover {
 /* Custom default button */
 .btn-secondary,
 .btn-secondary:focus {
-  color: #fff;
+  color: #FAD02C;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: transparent;
-  border: .05rem solid #fff;
+  border: .05rem solid #FAD02C;
 }
 .btn-secondary:hover {
 	color: #333;
 	text-shadow: none; /* Prevent inheritance from `body` */
-	background-color: #fff;
-	border: .05rem solid #333;
+	background-color: #FAD02C;
+	border: .05rem solid #FAD02C;
 }
 
 /*
@@ -92,7 +92,6 @@ body {
     float: right;
   }
 }
-
 
 /*
  * Cover
