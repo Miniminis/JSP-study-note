@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class LoginInfo {
 	
-	/* form ³»ºÎÀÇ input ÅÂ±×ÀÇ name ¼Ó¼º°ú °°Àº º¯¼öÀÌ¸§À» »ç¿ëÇØ¾ß ÇÑ´Ù!!!! */
+	/* form ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ input ï¿½Â±ï¿½ï¿½ï¿½ name ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½!!!! */
 	private String userid;
-	private String username;
+	private String userpw;
 	private String uphoto;
-	private Date regDate;
+	//private String regDate;
 
 
-	public LoginInfo(String userid, String username, String uphoto, Date regDate) {
+	public LoginInfo(String userid, String userpw, String uphoto) {
 		this.userid = userid;
-		this.username = username;
+		this.userpw = userpw;
 		this.uphoto = uphoto;
-		this.regDate = regDate;
+		//this.regDate = regDate;
 	}
 
 
@@ -32,19 +32,16 @@ public class LoginInfo {
 	public String getUphoto() {
 		return uphoto;
 	}
-	
-	
-	
-	public Date getRegDate() {
-		return regDate;
-	}
+
+	//public String getRegDate() {
+		//return regDate;
+	//}
 
 
 
 	@Override
 	public String toString() {
-		return "LoginInfo [userid=" + userid + ", username=" + username + ", uphoto=" + uphoto + ", regDate=" + regDate
-				+ "]";
+		return "LoginInfo [userid=" + userid + ", username=" + username + ", uphoto=" + uphoto + "]";
 	}
 
 	

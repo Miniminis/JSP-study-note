@@ -70,6 +70,8 @@ application.setAttribute(userid, regData)
 
 
 <!-- ver 4.0 표현식에서 표현언어EL 로 코드 수정  -->
+<!-- ver 4.1 자바코드를 -> JSTL+EL을 이용하여 바꾸기  --> 
+
 <!-- EL 로 바꾸기 "출력"
 - 데이터 출력할때 
 - 내부 링크 경로 설정할때 
@@ -86,10 +88,20 @@ application.setAttribute(userid, regData)
 
 
 
-<!-- ver 4.1 자바코드를 -> JSTL+EL을 이용하여 바꾸기  --> 
 
 
-
+<!-- ver 5.0 JDBC를 통해 회원가입 폼 데이터 DB에 저장하기 -->
+<!-- 1. 회원가입 폼을 통해 입력받은 값을 데이터 베이스에 저장
+	 2. 회원가입 처리 - 확인페이지 출력 
+	 3. 로그인 - 데이터베이스를 통해서 아이디와 비밀번호 체크  
+		a. JDBC 드라이버 로드 -> JDBCDriverLoader 서블릿 클래스 통해서! (web.xml 맵핑)
+		b. 데이터베이스 연결 -> DBCPInit 서블릿 클래스 (web.xml 맵핑)
+			- 역할 1: JDBC 드라이버 로드 
+			- 역할 2: pool driver 연결 
+		c. 데이터 읽기 및 수정 
+			- conn 객체 통해서 statement 객체 생성
+		d. 커넥션 종료
+-->
 
 
 

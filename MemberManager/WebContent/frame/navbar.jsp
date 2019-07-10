@@ -6,16 +6,6 @@
 
 <div id="navbar" class="nav nav-masthead justify-content-center">
 	<a class="nav-link active" href="<c:url value='/'/>">홈</a>
-	
-	<a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      	게시판
-    </a>
-	    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	      <a class="dropdown-item" href="#">카테고리1</a>
-	      <a class="dropdown-item" href="#">카테고리2</a>        
-	      <div class="dropdown-divider"></div>
-	      <a class="dropdown-item" href="#">Comming Soon</a>
-	    </div>	
 	<a class="nav-link" href="<c:url value='/member/memberList2.jsp'/>">회원리스트2</a>
 	<a class="nav-link" href="<c:url value='/member/memberRegForm.jsp'/>">회원가입</a>	
 	<a class="dropdown-toggle nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

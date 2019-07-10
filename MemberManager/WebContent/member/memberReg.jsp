@@ -1,10 +1,13 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="member.MemberInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	request.setCharacterEncoding("utf-8");
-%>
+
+<% request.setCharacterEncoding("utf-8"); %>
 
 <jsp:useBean id="regData" class="member.MemberInfo" scope="request" />
 <jsp:setProperty property="*" name="regData" />
@@ -13,9 +16,49 @@
 	if (regData.getUphoto() == null) {
 		regData.setUphoto("<c:url value='/image/noimg.png'/>");
 	}
+	
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	int resultCnt = 0;
+	
+	//jdbcUrl
+	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
 
-	//어플리케이션 객체에 저장
-	application.setAttribute(regData.getUserid(), regData);
+	try {
+		//1. JDBC driver 로드 
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+		//2. 데이터베이스 연결 
+		conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
+		
+		//3. 데이터 읽기 및 수정 
+		/* 이름        널?       유형           
+		IDX       NOT NULL NUMBER(7)    
+		USERID    NOT NULL VARCHAR2(12) 
+		USERPW    NOT NULL VARCHAR2(16) 
+		USERNAME  NOT NULL VARCHAR2(20) 
+		USERPHOTO          VARCHAR2(30) 
+		REGDATE            DATE
+		 */		
+		 
+		String sql01 = "insert into memberinfo (idx, userid, userpw, username, userphoto) values (memberinfo_idx.nextval,?,?,?,null)";
+		pstmt = conn.prepareStatement(sql01);
+		
+		pstmt.setString(1, regData.getUserid());
+		pstmt.setString(2, regData.getUserpw());
+		pstmt.setString(3, regData.getUsername());
+
+		resultCnt = pstmt.executeUpdate();
+		
+		} catch (ClassNotFoundException ce) {
+			ce.printStackTrace();
+		} finally {
+		//4. 데이터 연결 종료
+		pstmt.close();
+		conn.close();	
+	}
+
 %>
 
 
@@ -49,18 +92,11 @@
 </head>
 
 <body class="text-center">
-
-	<%-- <%
-		request.setCharacterEncoding("utf-8");
-		String userid = request.getParameter("uid");
-		String userpassword = request.getParameter("upw");
-		String username = request.getParameter("uname");
-	%> --%>
-
+<%-- <h1><%= resultCnt %>개의 행이 추가되었습니다</h1> --%>
 	<!-- content start -->
-	<form action="memberReg.jsp" method="post" class="form-signin">	
+	<form class="form-signin">	
 		<img class="profile-img" src="../image/zootopia_1.jpg" alt="" width="72" height="72">
-		<h4 class="mb-3 font-weight-normal">회원가입이 완료되었습니다</h4>
+		<h4 class="mb-3 font-weight-normal"><%= resultCnt %>명의 회원님이 회원가입을 완료하였습니다.</h4>
 		
 		<label for="inputEmail" class="sr-only">이메일 주소(아이디)</label>
 		<input type="email" value="${regData.userid}" class="form-control">

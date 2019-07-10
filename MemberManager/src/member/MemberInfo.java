@@ -9,18 +9,16 @@ public class MemberInfo {
 	private String userpw;
 	private String username;
 	private String uphoto;
-	private Date regDate;
+	//private String regDate;
 	
-	public MemberInfo() {
-		this.regDate = new Date();
-	}
+	public MemberInfo() {}
 
 	public MemberInfo(String userid, String userpw, String username, String uphoto) {
 		this.userid = userid;
 		this.userpw = userpw;
 		this.username = username;
 		this.uphoto = uphoto;
-		this.regDate = new Date();
+		//this.regDate = regDate;
 	}
 
 	public String getUserid() {
@@ -54,12 +52,14 @@ public class MemberInfo {
 	public void setUphoto(String uphoto) {
 		this.uphoto = uphoto;
 	}
-	
 
-	public Date getRegDate() {
-		return regDate;
-	}
+	//public String getRegDate() {
+		//return regDate;
+	//}
 
+	//public void setRegDate(String regDate) {
+		//this.regDate = regDate;
+	//}
 
 	@Override
 	public String toString() {
@@ -68,7 +68,7 @@ public class MemberInfo {
 	
 	//MemberInfo ��ü���� LoginIngo ��ü�� ��ȯ
 	public LoginInfo toLoginInfo() {
-		LoginInfo loginInfo = new LoginInfo(userid, username,uphoto, regDate);
+		LoginInfo loginInfo = new LoginInfo(userid, username,uphoto);
 		
 		return loginInfo;
 	}
