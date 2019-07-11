@@ -27,18 +27,19 @@ public class WriteMessageService {
 	public int write(Message message) {
 		int resultCnt = 0;
 		
-		//1. Connection 생성
-		//2. dao 생성 
+		//1. DB 접근을 위한 Connection 객체 생성
+		//2. 쿼리문 실행을 위한 dao 객체 생성 
 		//3. insert 매서드 실행 
 		
 		Connection conn = null;
 		
 		try {
-			conn = ConnectionProvider.getConnection();
+			conn = ConnectionProvider.getConnection(); //DB 연결 
 			
-			MessageDao dao = MessageDao.getInstance();
+			MessageDao dao = MessageDao.getInstance(); //쿼리문 실행을 위해 싱글톤처리된 MessageDao 참조
 			
-			resultCnt = dao.insert(conn, message);
+			resultCnt = dao.insert(conn, message); //참조변수 dao 통해서 insert 매서드 호출 : 
+													//--> 쿼리문 실행을 위해 conn과 등록할 데이터 message 매개변수로 전달
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

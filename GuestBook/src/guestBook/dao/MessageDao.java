@@ -13,7 +13,11 @@ import jdbc.ConnectionProvider;
 
 public class MessageDao {
 	
-	//싱글톤 처리
+	//싱글톤 처리 
+	//* 		1. 외부 직접 참조 및 변경을 사전 차단 
+	//* 		2. 이 클래스는 기능클래스로 굳이 객체를 만들어서 참조할 필요가 없음 (참조해야할 특별한 변수가 없음)
+	//*			- 매번 객체를 만들어 참조하는 방법 보다는, getInstance() 매서드 호출만을 통해서 클래스에 접근할 수 있도록 한다. 
+	
 	//1. private 생성자 
 	private MessageDao () {}
 	
@@ -29,11 +33,13 @@ public class MessageDao {
 	
 	////////////////////////////////////////////////
 	
-	//1. insert 기능 : 사용자의 데이터를 추가하기 
+	//1. insert 기능 : 게시글 추가기능
 	public int insert(Connection conn, Message message) {
-		String sql = "insert into guestbook_message (message_id, gname, gpassword, gmessage) values (GM_MID_SEQ.nextval, ?,?,?)";
+		String sql = "insert into guestbook_message "
+				+ " (message_id, gname, gpassword, gmessage) "
+				+ " values (GM_MID_SEQ.nextval, ?,?,?)";
 		PreparedStatement pstmt = null;		
-		int resultCnt = 0;
+		int resultCnt = 0; 
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -124,7 +130,7 @@ public class MessageDao {
 				+ " select * from GUESTBOOK_MESSAGE m order by m.message_id desc "
 				+ " ) where rownum <= ? "
 				+ ") where rnum >= ?";
-		
+		//정렬 : message_id 순서대로 먼저 정렬 --> rownum 순서대로 또 정렬
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

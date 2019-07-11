@@ -32,16 +32,16 @@ public class MessageListView {
 		calculatePageTotalCnt(); //pageTotalCnt 
 	}
 
-	//페이지 번호 매서드 
+	//전체 페이지 번호 매서드 
 	private void calculatePageTotalCnt() {
 		
 		//	7/3 = 2 + (7%3 >0 이면 1);
-		if(messageTotalCnt==0) {
-			pageTotalCnt=0;
-		} else {
-			pageTotalCnt = messageTotalCnt / messageCountPerPage;
-			if(messageTotalCnt % messageCountPerPage >0) {
-				pageTotalCnt = pageTotalCnt + 1;
+		if(messageTotalCnt==0) { //만약 게시글이 0개라면 
+			pageTotalCnt=0;		//전체 페이지 번호도 0번
+		} else {				//게시글이 1개 이상이면 
+			pageTotalCnt = messageTotalCnt / messageCountPerPage; //전체 게시글의 수 / 페이지 당 게시글의 수 = 전체 페이지 번호
+			if(messageTotalCnt % messageCountPerPage >0) {			//만약 위의 연산 결과 나머지가 있다면 
+				pageTotalCnt = pageTotalCnt + 1;					//전체 페이지 번호 + 1
 			}
 		}	
 	}
@@ -76,7 +76,7 @@ public class MessageListView {
 	}
 	
 	
-	//메시지 
+	//메시지 리스트가 0일때 전체 메시지 개수 
 	public boolean isEmpty() {
 		return messageTotalCnt ==0; 
 	}

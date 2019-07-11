@@ -5,6 +5,8 @@
 <%
 	//1. form으로부터 데이터 받기 
 	//2. 받은 데이터는 Message 객체에 저장 : useBean 액션태그 사용 
+		//- 받은 데이터를 저장할 Message 객체 가져오기 : useBean
+		//- Message 객체에 전달받은 데이터 저장 : setProperty
 	//3. WriteMessageService 객체생성
 	//4. write 매서드 실행 : 1/0
 %>
@@ -15,11 +17,11 @@
 %>
 
 <jsp:useBean id="message" class="guestBook.Model.Message" scope="request"/>
-<jsp:setProperty property="*" name="message"/>
+<jsp:setProperty property="*" name="message"/> 
 
 <%
-	WriteMessageService service = WriteMessageService.getInstance();
-	int cnt = service.write(message);
+	WriteMessageService service = WriteMessageService.getInstance(); //싱글톤 처리된 WriteMessageService 객체 참조
+	int cnt = service.write(message); 
 %>
 
 <!DOCTYPE html>
@@ -33,9 +35,9 @@
 <style></style>
 </head>
 <body>
-
-	<h1>
-	<%= message.getGname() %>
+<%-- <%= message.getGname() %> --%>
+	
+	<h1>	
 	<!-- cnt 값 여부에 따라서 삼항연산자로 결과 분기처리  -->
 	<%= cnt>0?"방명록에 메시지를 남겼습니다.":"메시지 등록에 실패하였습니다."%>
 	</h1>
