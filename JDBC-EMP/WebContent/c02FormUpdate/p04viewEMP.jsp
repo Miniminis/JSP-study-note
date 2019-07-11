@@ -69,7 +69,7 @@
 		<%}; 		
 		%>
 		
-		<a href="emplist.jsp">전체 사원목록 바로가기</a>
+		<a href="p04emplist.jsp">전체 사원목록 바로가기</a>
 </body>
 </html>
 
