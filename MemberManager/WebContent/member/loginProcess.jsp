@@ -27,24 +27,20 @@
 	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
 	
 	try {
-		//드라이버 로드 
+		//1. 드라이버 로드 
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		//데이터베이스 연결 
+		//2. 데이터베이스 연결 
 		conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
 		
-		//데이터 조회 
-		String sql = "select * from memberinfo";
+		//3. 사용자 입력 아이디.equal 
+		String sql = "select * from memberinfo where userid="+userid;
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		
-		while(rs.next()) {
-			if(rs.getString("userid").equals(userid) && rs.getString("userpw").equals(userpw)) {
-				out.println(rs.getString("userid"));
-				out.println(rs.getString("userpw"));
-				break;
-				//response.sendRedirect(""+request.getContextPath()+"/member/myPage2.jsp");
-			}
+		if(rs.next() && rs.getString("userpw").equals(userpw)) {
+			out.println(rs.getString("userid"));
+			out.println(rs.getString("userpw"));
 		}
 		
 	} catch(ClassNotFoundException ce) {
@@ -63,7 +59,20 @@
 
 <!-- //로그인 폼에서 사용자 입력정보 받아오기
 
+while(rs.next()) {
+			if( ) {
+				session.setAttribute("LOGININFO", memberInfo.toLoginInfo());
+				out.println(rs.getString("userid"));
+				out.println(rs.getString("userpw"));
+				break;
+				//response.sendRedirect(""+request.getContextPath()+"/member/myPage2.jsp");
+			}
+		}
+		
 out.print("<script>alert('아이디 혹은 비밀번호가 틀립니다.'); history.go(-1);</script>");
+
+
+
 
 String userid = request.getParameter("userid");
 String userpw = request.getParameter("userpw");

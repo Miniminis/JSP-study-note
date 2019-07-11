@@ -6,14 +6,14 @@ public class LoginInfo {
 	
 	/* form ������ input �±��� name �Ӽ��� ���� �����̸��� ����ؾ� �Ѵ�!!!! */
 	private String userid;
-	private String userpw;
+	private String username;
 	private String uphoto;
-	//private String regDate;
+	private String regDate;
 
 
-	public LoginInfo(String userid, String userpw, String uphoto) {
+	public LoginInfo(String userid, String username, String uphoto) {
 		this.userid = userid;
-		this.userpw = userpw;
+		this.username = username;
 		this.uphoto = uphoto;
 		//this.regDate = regDate;
 	}
@@ -33,9 +33,9 @@ public class LoginInfo {
 		return uphoto;
 	}
 
-	//public String getRegDate() {
-		//return regDate;
-	//}
+	public String getRegDate() {
+		return regDate;
+	}
 
 
 

@@ -15,17 +15,17 @@
 	Statement stmt = null;
 	ResultSet rs = null;
 	
-	//jdbcUrl
+	//2-0. jdbcUrl
 	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
 	
 	try {
-		//드라이버 로드 
+		//1. 드라이버 로드 
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 	
-		//데이터베이스 연결 
+		//2. 데이터베이스 연결 
 		conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
 		
-		//데이터 조회 
+		//3. 데이터 조회 
 		String sql = "select * from memberinfo";
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
