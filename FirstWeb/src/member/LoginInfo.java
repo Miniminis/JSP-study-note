@@ -10,9 +10,9 @@ public class LoginInfo {
 	private String pNum;
 	
 	public LoginInfo(String id) {
-		//È¸¿ø°¡ÀÔ ÆûÀ» ÅëÇØ ÀúÀåµÈ µ¥ÀÌÅÍµéÀÌ ¾øÀ¸¹Ç·Î ÀÓÀÇ°ª ³Ö¾î¼­ °´Ã¼ »ý¼º
+		//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½Ö¾î¼­ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		this.id = id;
-		this.name = "ÇÃ·¡½Ã";
+		this.name = "ï¿½Ã·ï¿½ï¿½ï¿½";
 		this.photo = "noimg";
 		this.nicname = "Speedy";
 		this.grade = 1;
@@ -42,6 +42,6 @@ public class LoginInfo {
 	public String getpNum() {
 		return pNum;
 	}
-	
+
 	
 }

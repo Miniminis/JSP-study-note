@@ -20,7 +20,7 @@ public class HelloServlet extends HttpServlet {
 		
 		resp.setContentType("text/html; charset=utf-8");
 		
-		PrintWriter out = resp.getWriter(); //resp °¡ °¡Áø  getwriter °´Ã¼¸¦ °¡Áö°í ¿Í¾ß ÀÌ¸¦ ÅëÇØ ÀÀ´äÃ³¸®°¡ °¡´ÉÇÏ´Ù!
+		PrintWriter out = resp.getWriter(); //resp ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  getwriter ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¾ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½!
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<title>Hello, Servelet!!!!!");

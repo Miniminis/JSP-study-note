@@ -16,31 +16,28 @@ import javax.servlet.http.HttpServletResponse;
 
 /* servlet 
  * 0. public class FirstWebServlet extends HttpServlet 
- * - httpservlet »ó¼ÓÇÏ´Â Å¬·¡½º ¸¸µé±â 
- * *** tomcat ¿¬°á/µî·Ï ¹æ¹ý 2°¡Áö 
+ * - httpservlet ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 
+ * *** tomcat ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ 
  * 1. annotation @WebServlet("/first")
- * 2. web.xml¿¡ Á÷Á¢ ¿¬°á */
+ * 2. web.xmlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 
 @WebServlet(name = "firstservlet",urlPatterns ="/first")
-public class FirstWebServlet extends HttpServlet { //httpServeletÀ» »ó¼ÓÀ» ÇØ¾ß servlet class¶ó°í ÀÎ½ÄµÊ
+public class FirstWebServlet extends HttpServlet { //httpServeletï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¾ï¿½ servlet classï¿½ï¿½ï¿½ ï¿½Î½Äµï¿½
 	//private static final long serialVersionUID = 1L;
-       
-    /*** @see HttpServlet#HttpServlet()*/
-	/**  public FirstWebServlet() { //»ý¼ºÀÚ super(); } */
 
 	/*** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)*/ 										
 	protected void doGet(
-			HttpServletRequest request, //request: »ç¿ëÀÚÀÇ ¿äÃ»Á¤º¸¸¦ ´ã°íÀÖÀ½ - º¯¼ö <-- ¸Å¼­µå¸¦ ÅëÇØ ÇØ´ç º¯¼ö¸¦ ÂüÁ¶ÇÒ ¼ö ÀÖ´Ù.
-			HttpServletResponse response) //htmlÀÇ ÀÀ´äÁ¤º¸¸¦ response¿¡ ´ã¾Æ apach server¿¡ Àü´ÞÇÑ´Ù.
+			HttpServletRequest request, //request: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ <-- ï¿½Å¼ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½.
+			HttpServletResponse response) //htmlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ responseï¿½ï¿½ ï¿½ï¿½ï¿½ apach serverï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 					throws ServletException, IOException { 
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		//request. //»ç¿ëÀÚÀÇ ¿äÃ»
-		response.setContentType("text/html; charset=utf-8"); //»ç¿ëÀÚÀÇ ¿äÃ»¿¡ ´ëÇÑ ÄÜÅÙÃ÷ Å¸ÀÔ¼³Á¤, printwriter¸¦ ÅëÇØ Ãâ·Â
+		//request. //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»
+		response.setContentType("text/html; charset=utf-8"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ô¼ï¿½ï¿½ï¿½, printwriterï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		PrintWriter out = response.getWriter(); 
 		out.println("<html><head><title>first web</title></head>");
-		out.println("<body><h1>½Ã°£: "+ new Date());
+		out.println("<body><h1>ï¿½Ã°ï¿½: "+ new Date());
 		out.println("</h1></body></html>");
 	}
 
