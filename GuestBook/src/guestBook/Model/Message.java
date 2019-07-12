@@ -1,5 +1,6 @@
 package guestBook.Model;
 
+//DB 와 연결 - 테이블에서 가져온 데이터들을 저장하는 클래스 
 public class Message {
 	
 	

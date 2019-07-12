@@ -18,7 +18,7 @@
 
 <jsp:useBean id="message" class="guestBook.Model.Message" scope="request"/>
 <jsp:setProperty property="*" name="message"/> 
-
+<!-- 입력 1. 이 단계까지는 Message 클래스에만 게시글 입력 정보가 저장된 상태 -->
 <%
 	WriteMessageService service = WriteMessageService.getInstance(); //싱글톤 처리된 WriteMessageService 객체 참조
 	int cnt = service.write(message); 
@@ -41,7 +41,7 @@
 	<!-- cnt 값 여부에 따라서 삼항연산자로 결과 분기처리  -->
 	<%= cnt>0?"방명록에 메시지를 남겼습니다.":"메시지 등록에 실패하였습니다."%>
 	</h1>
-	<a href="formList.jsp">목록보기</a>
+	<a href="p01formList.jsp">목록보기</a>
 	
 	
 </body>

@@ -36,6 +36,8 @@ public class WriteMessageService {
 		try {
 			conn = ConnectionProvider.getConnection(); //DB 연결 
 			
+			//입력 2. Message 클래스에만 저장된 게시글 등록 정보를 dao를 통해서 DB에 저장하기 위해 
+			//dao 객체 생성, insert 매서드 호출 (message 객체 매개변수로 전달)
 			MessageDao dao = MessageDao.getInstance(); //쿼리문 실행을 위해 싱글톤처리된 MessageDao 참조
 			
 			resultCnt = dao.insert(conn, message); //참조변수 dao 통해서 insert 매서드 호출 : 

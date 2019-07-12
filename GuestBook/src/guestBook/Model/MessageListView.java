@@ -3,7 +3,7 @@ package guestBook.Model;
 import java.util.List;
 
 public class MessageListView {
-	
+	//화면에 필요한 데이터들을 저장하는 역할 
 	//변수 설정은 이곳에서, 각 변수들의 로직은 GetMessageListService.java 에서 구상 
 	
 	private int messageTotalCnt;  //전체 등록된 방명록의 수 

@@ -83,7 +83,7 @@ public class GetMessageListService {
 					endRow);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		
 		return view;
 	}

@@ -10,6 +10,7 @@ import java.util.List;
 
 import guestBook.Model.Message;
 import jdbc.ConnectionProvider;
+import jdbc.jdbcUtil;
 
 public class MessageDao {
 	
@@ -44,6 +45,7 @@ public class MessageDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
+			//입력 3. Message 클래스에만 저장되어있었던 게시글 등록 정보가 DB 에 저장됨 
 			pstmt.setString(1, message.getGname());
 			pstmt.setString(2, message.getGpassword());
 			pstmt.setString(3, message.getGmessage());		
@@ -121,13 +123,14 @@ public class MessageDao {
 		return totalCnt;
 	}
 
+	//4. 게시물 리스트 출력 기능 
 	public List<Message> selectList(Connection conn, int startRow, int endRow) {
 		
 		List<Message> list = new ArrayList<Message>();
 		
 		String sql = "select MESSAGE_ID, GNAME, GPASSWORD, GMESSAGE from ( "
 				+ " select rownum rnum, MESSAGE_ID, GNAME, GPASSWORD, GMESSAGE from ( "
-				+ " select * from GUESTBOOK_MESSAGE m order by m.message_id desc "
+				+ " select * from GUESTBOOK_MESSAGE m order by m.message_id desc "   //최근 게시물부터 보이기 : desc 
 				+ " ) where rownum <= ? "
 				+ ") where rnum >= ?";
 		//정렬 : message_id 순서대로 먼저 정렬 --> rownum 순서대로 또 정렬
@@ -157,6 +160,25 @@ public class MessageDao {
 		}	
 		
 		return list;
+	}
+
+	//5. 게시물 삭제 기능 
+	public int deleteMessage(Connection conn, int mId) throws SQLException {
+		
+		//PreparedStatement 객체 생성 
+		PreparedStatement pstmt = null;
+		String sql = "delete from guestbook_message where MESSAGE_ID=?";
+		int resultCnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mId);
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			//다른 예외 구문은 Service 페이지에서 처리하므로 catch 구문은 삭제, 여기서는 throw 로 처리 
+			jdbcUtil.close(pstmt);
+		}
+		return resultCnt;
 	}
 	
   

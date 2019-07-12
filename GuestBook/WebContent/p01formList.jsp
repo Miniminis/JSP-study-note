@@ -50,7 +50,7 @@
 <body>
 	<h2>방명록 글쓰기</h2>
 	<hr>
-	<form action="writeMessage.jsp" method="post">
+	<form action="p02writeMessage.jsp" method="post">
 		<table>
 			<tr>
 				<td>이름</td>
@@ -88,7 +88,7 @@
 						<td>메시지번호 : <%= message.getMessage_id() %></td>
 						<td>손님이름 : <%= message.getGname() %></td>
 						<td>메시지 : <%= message.getGmessage() %></td>
-						<td><a href="#">삭제하기</a></td>
+						<td><a href="p03confirmDeletion.jsp?messageId=<%= message.getMessage_id() %>">삭제하기</a></td>
 					</tr>
 				</table>
 			</div>
