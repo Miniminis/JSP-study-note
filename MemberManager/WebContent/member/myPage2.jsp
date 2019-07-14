@@ -9,29 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%
-	
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
-	//2-0. jdbcUrl
-	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
-	
-	try {
-		//1. 드라이버 로드 
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-	
-		//2. 데이터베이스 연결 
-		conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
-		
-		//3. 데이터 조회 
-		String sql = "select * from memberinfo";
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-	
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,13 +50,7 @@
 				
 		<!-- content start -->
 		<div id="content" role="main" class="inner cover">
-		<%
-			while(rs.next()) {
-				if() {
-					
-				}
-			}
-		%>
+		<c:if test="${sessionScope.LOGININFO ne null}">
 			<img src="<c:url value='../image/zootopia_1.jpg'/>" class="profile-img"><br>
 			<h3>내정보 보기</h3>
 			<table class="table">
@@ -96,63 +67,14 @@
 			      <td>${sessionScope.LOGININFO.regDate}</td>
 			    </tr>	 
 			</table>
+		</c:if>
+		<c:if test="${sessionScope.LOGININFO eq null}">
 			<script>
 				alert('로그인이 필요한 페이지입니다!');
 				location.href="login.jsp";
 			</script>
-			<!-- content end -->
+		</c:if>
 		</div>
 	</div>
 </body>
-</html>
 
-<%
-
-	while(rs.next()) {
-		if(rs.getString("userid").equals(userid) && rs.getString("userpw").equals(userpw)) {
-			response.sendRedirect(""+request.getContextPath()+"/member/myPage2.jsp");
-		} else {
-			out.print("<script>alert('아이디 혹은 비밀번호가 틀립니다.'); history.go(-1);</script>");
-		}
-	}
-	
-	} catch(ClassNotFoundException ce) {
-	ce.printStackTrace();
-	} catch (SQLException se) {
-	se.printStackTrace();
-	} finally {
-	//데이터베이스 연결 종료
-	rs.close();
-	stmt.close();
-	conn.close();
-	}
-%>
-
-
-
-
-
-<%-- <c:if test="${sessionScope.LOGININFO ne null}">
-	<img src="<c:url value='../image/zootopia_1.jpg'/>" class="profile-img"><br>
-	<h3>내정보 보기</h3>
-	<table class="table">
-	    <tr>
-	      <th scope="col">아이디</th>
-	      <td>${sessionScope.LOGININFO.userid}</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">이름</th>
-	      <td>${sessionScope.LOGININFO.username}</td>
-	    </tr>
-	    <tr>
-	      <th scope="row">가입일</th>
-	      <td>${sessionScope.LOGININFO.regDate}</td>
-	    </tr>	 
-	</table>
-</c:if>
-<c:if test="${sessionScope.LOGININFO eq null}">
-	<script>
-		alert('로그인이 필요한 페이지입니다!');
-		location.href="login.jsp";
-	</script>
-</c:if> --%>

@@ -23,14 +23,18 @@
 	int resultCnt = 0;
 	
 	//jdbcUrl
-	String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
+	//String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+
 
 	try {
 		//1. JDBC driver 로드 
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("com.mysql.jdbc.Driver"); 
+		//Class.forName("oracle.jdbc.driver.OracleDriver");
 		
 		//2. 데이터베이스 연결 
-		conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
+		conn = DriverManager.getConnection(jdbcUrl, "bit", "bit");
+		//conn = DriverManager.getConnection(jdbcUrl, "SCOTT", "tiger");
 		
 		//3. 데이터 읽기 및 수정 
 		/* 이름        널?       유형           
@@ -41,8 +45,9 @@
 		USERPHOTO          VARCHAR2(30) 
 		REGDATE            DATE
 		 */		
-		 
-		String sql01 = "insert into memberinfo (idx, userid, userpw, username, userphoto) values (memberinfo_idx.nextval,?,?,?,null)";
+		
+		String sql01 = "insert into memberinfo (userid, userpw, username, userphoto) values (?,?,?,null)";
+		//String sql01 = "insert into memberinfo (idx, userid, userpw, username, userphoto) values (memberinfo_idx.nextval,?,?,?,null)";
 		pstmt = conn.prepareStatement(sql01);
 		
 		pstmt.setString(1, regData.getUserid());

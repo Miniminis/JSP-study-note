@@ -100,7 +100,7 @@ application.setAttribute(userid, regData)
 			- 역할 2: pool driver 연결 
 		c. 데이터 읽기 및 수정 
 			- conn 객체 통해서 statement 객체 생성
-		d. 커넥션 종료
+		d. 커넥션 종료	
 -->
 
 
