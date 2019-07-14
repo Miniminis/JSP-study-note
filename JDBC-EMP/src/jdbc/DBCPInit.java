@@ -23,10 +23,10 @@ public class DBCPInit extends HttpServlet {
 
 	private void loadJDBCDriver() {
 		try {
-			// Ä¿³Ø¼Ç Ç®ÀÌ ³»ºÎ¿¡¼­ »ç¿ëÇÒ jdbc µå¶óÀÌ¹ö¸¦ ·ÎµùÇÔ.
-			// Class.forName("com.mysql.jdbc.Driver");
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("Oracle µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå ¼º°ø....!!!!!!");
+			// Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ jdbc ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½.
+			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("Oracle ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½....!!!!!!");
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
@@ -40,48 +40,48 @@ public class DBCPInit extends HttpServlet {
 			String username = "scott";
 			String pw = "tiger";
 			
-			//Ä¿³Ø¼ÇÇ®ÀÌ »õ·Î¿î Ä¿³Ø¼ÇÀ» »ý¼ºÇÒ ¶§ »ç¿ëÇÒ Ä¿³Ø¼ÇÆÑÅä¸®¸¦ »ý¼º.
+			//Ä¿ï¿½Ø¼ï¿½Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcDriver, username, pw);
 			
-			// PoolableConnectionÀ» »ý¼ºÇÏ´Â ÆÑÅä¸® »ý¼º.
-			// DBCP´Â Ä¿³Ø¼ÇÀ» º¸°üÇÒ ¶§ PoolableConnection À» »ç¿ë
-			// ½ÇÁ¦ Ä¿³Ø¼ÇÀ» ´ã°í ÀÖÀÖÀ¸¸ç, Ä¿³Ø¼Ç Ç®À» °ü¸®ÇÏ´Âµ¥ ÇÊ¿äÇÑ ±â´ÉÀ» Á¦°øÇÑ´Ù.
-			// Ä¿³Ø¼ÇÀ» closeÇÏ¸é Á¾·áÇÏÁö ¾Ê°í Ä¿³Ø¼Ç Ç®¿¡ ¹ÝÈ¯
+			// PoolableConnectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½.
+			// DBCPï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ PoolableConnection ï¿½ï¿½ ï¿½ï¿½ï¿½
+			// ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Âµï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+			// Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ closeï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½È¯
 			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
 			
-			//Ä¿³Ø¼ÇÀÌ À¯È¿ÇÑÁö ¿©ºÎ¸¦ °Ë»çÇÒ ¶§ »ç¿ëÇÏ´Â Äõ¸®¸¦ ÁöÁ¤ÇÑ´Ù.
+			//Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			poolableConnFactory.setValidationQuery("select 1");
 			
-			//Ä¿³Ø¼Ç Ç®ÀÇ ¼³Á¤ Á¤º¸¸¦ »ý¼ºÇÑ´Ù.
+			//Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
 			
-			//À¯ÈÞ Ä¿³Ø¼Ç °Ë»ç ÁÖ±â
+			//ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ ï¿½Ë»ï¿½ ï¿½Ö±ï¿½
 			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
 			
-			//Ç®¿¡ º¸°üÁßÀÎ Ä¿³Ø¼ÇÀÌ À¯È¿ÇÑÁö °Ë»çÇÒÁö À¯¹« ¼³Á¤
+			//Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			poolConfig.setTestWhileIdle(true);
 			
-			//Ä¿³Ø¼Ç ÃÖ¼Ò °³¼ö
+			//Ä¿ï¿½Ø¼ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 			poolConfig.setMinIdle(4);
 			
-			//Ä¿³Ø¼Ç ÃÖ´ë °³¼ö
+			//Ä¿ï¿½Ø¼ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
 			poolConfig.setMaxTotal(50);
 			
-			//Ä¿³Ø¼Ç Ç®À» »ý¼º. »ý¼ºÀÚ´Â PoolabeConnectionFactory¿Í GenericObjectPoolConfig¸¦ »ç¿ë
+			//Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ PoolabeConnectionFactoryï¿½ï¿½ GenericObjectPoolConfigï¿½ï¿½ ï¿½ï¿½ï¿½
 			GenericObjectPool<PoolableConnection> connectionPool =
 			new GenericObjectPool<>(poolableConnFactory, poolConfig);
 			
-			//PoolabeConnectionFactory¿¡µµ Ä¿³Ø¼Ç Ç®À» ¿¬°á
+			//PoolabeConnectionFactoryï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			poolableConnFactory.setPool(connectionPool);
 			
-			//Ä¿³Ø¼Ç Ç®À» Á¦°øÇÏ´Â jdbc µå¶óÀÌ¹ö¸¦ µî·Ï.
+			//Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ jdbc ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver("jdbc:apache:commons:dbcp:");
 			
 		
-			//À§¿¡¼­ Ä¿³Ø¼Ç Ç® µå¶óÀÌ¹ö¿¡ »ý¼ºÇÑ Ä¿³Ø¼Ç Ç®À» µî·ÏÇÑ´Ù. ÀÌ¸§Àº chap14 ÀÌ´Ù.
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ Ç® ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½Ø¼ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½Ì¸ï¿½ï¿½ï¿½ chap14 ï¿½Ì´ï¿½.
 			driver.registerPool("pool", connectionPool);
-			System.out.println("Ä¿³Ø¼Ç Ç® µî·Ï!!!!!");
+			System.out.println("Ä¿ï¿½Ø¼ï¿½ Ç® ï¿½ï¿½ï¿½!!!!!");
 			
 		} catch (Exception e) {
 			  throw new RuntimeException(e);

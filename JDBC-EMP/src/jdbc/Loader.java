@@ -16,9 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 //��� 1. annotation�� ���ؼ� jdbc ����̹� �ε��ϱ� 
 //��� 2. web.xml �̿��Ͽ� jdbc ����̹� �ε��ϱ� 
-@WebServlet(urlPatterns = { "/Loader" }, initParams = {
-		@WebInitParam(name = "jdbcdriver", value = "oracle.jdbc.driver.OracleDriver", description = "oraclejdbc") })
-
+/*
+ * @WebServlet(urlPatterns = { "/Loader" }, initParams = {
+ * 
+ * @WebInitParam(name = "jdbcdriver", value = "oracle.jdbc.driver.OracleDriver",
+ * description = "oraclejdbc") })
+ */
 public class Loader extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {

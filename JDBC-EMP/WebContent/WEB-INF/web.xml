@@ -22,11 +22,11 @@
 	</servlet>
  -->
  
- <servlet>
+<servlet>
  	<servlet-name>DBCPInit</servlet-name>
  	<servlet-class>jdbc.DBCPInit</servlet-class>
  	<load-on-startup>1</load-on-startup> <!-- 최초 서버 실행시 1번만 실행! -->
- </servlet>	
+</servlet> 
 	
   
 </web-app>
