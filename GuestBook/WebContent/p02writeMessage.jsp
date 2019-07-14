@@ -21,7 +21,8 @@
 <!-- 입력 1. 이 단계까지는 Message 클래스에만 게시글 입력 정보가 저장된 상태 -->
 <%
 	WriteMessageService service = WriteMessageService.getInstance(); //싱글톤 처리된 WriteMessageService 객체 참조
-	int cnt = service.write(message); 
+	int cnt = service.write(message); //사용자의 요청인 message 등록을 service 객체로 매개변수 형태로 전달
+	//메시지 저장이 잘되었다면 1을, 실패했다면 0을 반환
 %>
 
 <!DOCTYPE html>

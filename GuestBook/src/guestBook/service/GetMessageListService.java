@@ -64,6 +64,7 @@ public class GetMessageListService {
 			
 			if(messageTotalCnt >0) {
 				
+				//파라미터로 넘겨받은 pageNumber 에 따라서 게시판 리스트의 시작로우와 끝 로우가 정해진다.
 				startRow = (pageNumber -1)*MESSAGE_COUNT_PER_PAGE +1;
 				endRow = startRow + MESSAGE_COUNT_PER_PAGE -1;
 				

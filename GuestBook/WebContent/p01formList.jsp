@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	//게시판 리스트 보기의 시작점: 사용자가 보고자 하는 페이지 번호 입력! --> 파라미터 값으로 받음 
 	String pageNumberstr = request.getParameter("page");
 	
 	//값이 전달 안되었을 경우를 대비하여 1페이지로 초기화 
@@ -18,7 +19,7 @@
 	GetMessageListService service = GetMessageListService.getInstance();
 	
 	//응답 데이터의 결과 
-	MessageListView viewData = service.getMessageListView(pageNumber);
+	MessageListView viewData = service.getMessageListView(pageNumber); //사용자의 요청인 게시판 페이지 번호를 매개변수로 전달
 
 %>
 

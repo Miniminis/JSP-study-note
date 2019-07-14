@@ -62,6 +62,7 @@ public class MessageDao {
 			}
 		}
 		
+		//메시지 저장성공 --> 1, 저장실패 --> 0
 		return resultCnt;
 	}
 	
@@ -88,8 +89,7 @@ public class MessageDao {
 				message.setMessage_id(rs.getInt(1));
 				message.setGname(rs.getString(2));
 				message.setGpassword(rs.getString(3));
-				message.setGmessage(rs.getString(4));
-				
+				message.setGmessage(rs.getString(4));	
 			}
 			
 		} catch (SQLException se) {
@@ -133,16 +133,16 @@ public class MessageDao {
 				+ " select * from GUESTBOOK_MESSAGE m order by m.message_id desc "   //최근 게시물부터 보이기 : desc 
 				+ " ) where rownum <= ? "
 				+ ") where rnum >= ?";
-		//정렬 : message_id 순서대로 먼저 정렬 --> rownum 순서대로 또 정렬
+		//정렬 : message_id 순서대로 내림차순 정렬 : 최근 메시지부터 노출 --> rownum의 마지막열과 처음열을 이용해서 페이지 개수인 3개 별로 나눠준 3행짜리 표 
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; //
 		
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, endRow);
 			pstmt.setInt(2, startRow);	
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery(); //rs 는 전체 게시물 리스트를 3행마다 쪼갠 3행짜리 표를 갖게 된다.
 			
 			while(rs.next()) {
 				Message msg = new Message();

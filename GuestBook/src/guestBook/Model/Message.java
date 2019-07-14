@@ -45,10 +45,13 @@ public class Message {
 		this.gmessage = gmessage;
 	}
 	
+	//메시지 삭제 시 사용자 확인을 위한 비밀번호 검사 
+	//1. 사용자의 비밀번호 입력값이 있는지, 
+	//2. 사용자가 입력한 비밀번호 값과, DB에서 가져와 Message 객체에 저장한 gpassword 가 일치하는지 
 	
 	//password 유효성 검사
 	public boolean hasPassword() {
-		//사용자가 저장할 password 가 값이 존재하고, 공백이 아니라면 --> true 반환 --> password 조건 통과! 
+		//사용자가 입력한 password 가 값이 존재하고, 공백이 아니라면 --> true 반환 --> password 조건 통과! 
 		return gpassword !=null && !gpassword.isEmpty();	
 	}
 	

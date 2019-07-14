@@ -47,7 +47,7 @@ public class WriteMessageService {
 			e.printStackTrace();
 		}
 		
-		
+		//메시지 저장 성공 --> 1, 저장실패 --> 0 반환 
 		return resultCnt; 
 		//write() 를 호출한 writeMessage.jsp 페이지로 resultCnt 값이 전달됨 
 	}
