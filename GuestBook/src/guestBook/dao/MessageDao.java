@@ -36,6 +36,9 @@ public class MessageDao {
 	
 	//1. insert 기능 : 게시글 추가기능
 	public int insert(Connection conn, Message message) {
+		
+		//mysql 
+		//String sql = "insert into testdb.GUESTBOOK_MESSAGE (GUEST_NAME, PASSWORD, MESSAGE) values (?,?,?)";
 		String sql = "insert into guestbook_message "
 				+ " (message_id, gname, gpassword, gmessage) "
 				+ " values (GM_MID_SEQ.nextval, ?,?,?)";
@@ -70,6 +73,8 @@ public class MessageDao {
 	//2. 메시지 선택 기능 
 	public Message select(Connection conn, int mid) {
 		Message message = null;
+		
+		//String sql02 = "select * from testdb.guestbook_message where message_id=?";
 		String sql02 = "select * from guestbook_message where message_id=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -103,6 +108,7 @@ public class MessageDao {
 	//3.전체 게시물의 개수 반환 
 	public int selectCnt(Connection conn) {
 		
+		//String sql = "select count(*) from testdb.guestbook_message";
 		String sql = "select count(*) from guestbook_message";
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -127,6 +133,8 @@ public class MessageDao {
 	public List<Message> selectList(Connection conn, int startRow, int endRow) {
 		
 		List<Message> list = new ArrayList<Message>();
+		
+		//String sql = "select * from testdb.guestbook_message order by message_id desc limit ?, ?";
 		
 		String sql = "select MESSAGE_ID, GNAME, GPASSWORD, GMESSAGE from ( "
 				+ " select rownum rnum, MESSAGE_ID, GNAME, GPASSWORD, GMESSAGE from ( "
@@ -167,6 +175,8 @@ public class MessageDao {
 		
 		//PreparedStatement 객체 생성 
 		PreparedStatement pstmt = null;
+		
+		//String sql = "delete from testdb.guestbook_message where message_id=?";
 		String sql = "delete from guestbook_message where MESSAGE_ID=?";
 		int resultCnt = 0;
 		
