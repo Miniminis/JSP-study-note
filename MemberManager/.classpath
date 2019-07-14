@@ -13,5 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/minhe/Documents/GitHub/JSP-study-note/lib/commons-dbcp2-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/minhe/Documents/GitHub/JSP-study-note/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/minhe/Documents/GitHub/JSP-study-note/lib/commons-pool2-2.4.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
