@@ -24,9 +24,9 @@ public class DBCPInit extends HttpServlet {
 	private void loadJDBCDriver() {
 		try {
 			// Ŀ�ؼ� Ǯ�� ���ο��� ����� jdbc ����̹��� �ε���.
-			Class.forName("com.mysql.jdbc.Driver");
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("Oracle �����ͺ��̽� ����̹� �ε� ����....!!!!!!");
+			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("Oracle is successfully connected!");
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
@@ -36,7 +36,7 @@ public class DBCPInit extends HttpServlet {
 		
 		try {
 			
-			String jdbcDriver = "jdbc:oracle:thin:localhost:1521:orcl";
+			String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:orcl"; 
 			String username = "scott";
 			String pw = "tiger";
 			
@@ -81,7 +81,7 @@ public class DBCPInit extends HttpServlet {
 		
 			//������ Ŀ�ؼ� Ǯ ����̹��� ������ Ŀ�ؼ� Ǯ�� ����Ѵ�. �̸��� chap14 �̴�.
 			driver.registerPool("pool", connectionPool);
-			System.out.println("Ŀ�ؼ� Ǯ ���!!!!!");
+			System.out.println("Pool is registered successfully");
 			
 		} catch (Exception e) {
 			  throw new RuntimeException(e);

@@ -24,10 +24,10 @@ public class DBCPInit extends HttpServlet {
 	private void loadJDBCDriver() {
 		try {
 			// Ŀ�ؼ� Ǯ�� ���ο��� ����� jdbc ����̹��� �ε���.
-			Class.forName("com.mysql.jdbc.Driver");
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("Mysql Driver is loaded successfully");
-			//System.out.println("Oracle Driver is loaded successfully");
+			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//System.out.println("Mysql Driver is loaded successfully");
+			System.out.println("Oracle Driver is loaded successfully");
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
@@ -38,13 +38,13 @@ public class DBCPInit extends HttpServlet {
 		try {
 			
 			
-			String jdbcDriver = "jdbc:mysql://localhost:3306/testdb";
-			String username = "bit";
-			String pw = "bit";
+			//String jdbcDriver = "jdbc:mysql://localhost:3306/testdb";
+			//String username = "bit";
+			//String pw = "bit";
 			
-			//String jdbcDriver = "jdbc:oracle:thin:localhost:1521:orcl";
-			//String username = "scott";
-			//String pw = "tiger";
+			String jdbcDriver = "jdbc:oracle:thin:@localhost:1521:orcl"; 
+			String username = "scott";
+			String pw = "tiger";
 			
 			//Ŀ�ؼ�Ǯ�� ���ο� Ŀ�ؼ��� ������ �� ����� Ŀ�ؼ����丮�� ����.
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcDriver, username, pw);
