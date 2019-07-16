@@ -100,7 +100,7 @@
 	for(int i=1; i<= viewData.getPageTotalCnt(); i++) {
 	
 	%>
-	<a href="formList.jsp?page=<%= i %>">[<%= i %>]</a>
+	<a href="p01formList.jsp?page=<%= i %>">[<%= i %>]</a>
 	<%
 		
 	}
