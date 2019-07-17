@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="application/JSON; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 [{
     "name": "우유",
     "price": 2000

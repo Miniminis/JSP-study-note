@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax Basic</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+        	
+        	setTimeout(function(){
+        		$.ajax({
+                    url: 'parameter.jsp',
+                    type: 'GET',
+                    data: {
+                        name: $('#txt').val(), //localhost:8080/parameter.jsp?name="milk"&&price="test"
+                        price: '10000'
+                    },
+                    success: function (data) {
+                        $('body').append(data);
+                    }
+                });
+        	}, 5000); //3초 후 실행 
+            
+        });
+    </script>
+</head>
+<body>
+
+<input type="text" id="txt" value="milk"><br>
+<!-- ajax() 의 실행 결과가 이 부분에 추가됨  -->
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Ajax Basic</title>
+     <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+        	
+        	//사용자 아이디, 관리자 아이디 입력값에 따른 다른 반응처리
+        	$('#userid').focusout(function(){
+        		$.ajax({
+                    url: 'idChk.jsp',
+                    type: 'GET',
+                    data: {
+                        userid: $('#userid').val(), //localhost:8080/parameter.jsp?userid=""?pw="test"
+                        pw: 'test'
+                    },
+                    success: function (data) {
+                    	if(data == 'Y') {
+                    		//alert('Welcome, User!');
+                    		//alert('사용자님 환영합니다! ');
+                    		//$('body').append('<span style="color: blue;">사용자님, 아이디를 입력해주세요!</span>');
+                    		$('#idChk').html('사용자님, 환영합니다!');
+                    		$('#idChk').css('color', 'blue');
+                    	} else if(data='A') {
+                    		//alert('Welcome, Admin!');
+                    		//alert('관리자님, 환영합니다!');
+                    		//$('body').append('<span style="color: red;">관리자님, 환영합니다!</span>');
+                    		$('#idChk').html('관리자님, 환영합니다!');
+                    		$('#idChk').css('color', 'red');
+                    	} else if (data='N'){
+                    		$('#idChk').html('입력된 아이디 없음 : 입력된 비밀번호 없음');
+                    		$('#idChk').css('color', 'pink');	
+                    	}
+                    	
+                        //$('body').append(data);
+                    }
+                });
+        		
+        	});
+        	
+        	
+        	
+        	//버튼 이벤트 : 사용자, 관리자 계정에 따른 반응 분기처리
+        	/* $('#btn').click(function(){
+        		$.ajax({
+                    url: 'idChk.jsp',
+                    type: 'GET',
+                    data: {
+                        userid: $('#userid').val(), //localhost:8080/parameter.jsp?userid=""?pw="test"
+                        pw: 'test'
+                    },
+                    success: function (data) {
+                    	if(data == 'Y') {
+                    		//alert('Welcome, User!');
+                    		//alert('사용자님 환영합니다! ');
+                    		$('body').append('<span style="color: blue;">사용자님, 환영합니다!</span>');
+                    	} else if(data='A') {
+                    		//alert('Welcome, Admin!');
+                    		//alert('관리자님, 환영합니다!');
+                    		$('body').append('<span style="color: red;">관리자님, 환영합니다!</span>');
+                    	}
+                    	
+                        //$('body').append(data);
+                    }
+                });
+        		
+        	});
+        	 */
+        	
+        	 //5초 시간차 간격을 두고 html 텍스트 추가  
+        	/* setTimeout(function(){
+        		$.ajax({
+                    url: 'parameter.jsp',
+                    type: 'GET',
+                    data: {
+                        userid: $('#userid').val(), //localhost:8080/parameter.jsp?userid="minhee"&&pw="test"
+                        pw: 'test'
+                    },
+                    success: function (data) {
+                    	if(data == 'Y') {
+                    		alert('멋진아이디 입니다!');
+                    	}
+                        $('body').append(data);
+                    }
+                });
+        	}, 5000); //5초 후 실행 
+             */
+        });
+    </script>
+</head>
+<body>
+
+<input type="text" id="userid" value=""><input type="button" id="btn" value="아이디체크"><br>
+<!-- ajax() 의 실행 결과가 이 부분에 추가됨  -->
+
+<span id="idChk"></span>
+</body>
+</html>
