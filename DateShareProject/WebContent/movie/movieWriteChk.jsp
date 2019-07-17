@@ -1,5 +1,19 @@
+<%@page import="dateShare.service.movie.WriteMovieService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("utf-8");	
+%>
+
+<jsp:useBean id="movietext" class="dateShare.Model.Movie" scope="request"/>
+<jsp:setProperty property="*" name="movietext"/>
+
+<%
+	WriteMovieService service = WriteMovieService.getInstance();
+	int resultCnt = service.write(movietext);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +35,7 @@
             <%@ include file="../frame/nav.jsp" %>
         </div>
         <div id="content">
-            <h1>게시물이 성공적으로 출력되었습니다.</h1>      
+            <h1><%= resultCnt>0? "게시물이 성공적으로 출력되었습니다" : "게시물이 출력안됨" %></h1>      
             <a href="movieMain.jsp"><input type="button" value="다른 콘텐츠 보기"></a> 
         </div>
         <div id="footer">
