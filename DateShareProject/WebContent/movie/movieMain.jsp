@@ -45,7 +45,7 @@
             			%>          				
             				<div>
             					<h1>게시글리스트</h1>
-	            				<a href="movieContentView.jsp?articleNum=<%= movie.getM_num() %>">
+	            				<a href="movieContentView.jsp?articleNum=<%= movie.getM_num() %>">	            				
 	            					<div>사진<%= movie.getM_path() %></div>
 	            					<div>
 	            						제목 <%= movie.getM_title() %><br>

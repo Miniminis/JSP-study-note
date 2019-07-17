@@ -10,9 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <servlet>
+  <!-- <servlet>
   	<servlet-name>DBCPInit</servlet-name>
   	<servlet-class>jdbc.DBCPInit</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet> -->
+  
+  <servlet>
+  	<servlet-name>DBCPInit</servlet-name>
+  	<servlet-class>jdbc.DBCPInitMysql</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
   

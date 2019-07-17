@@ -11,10 +11,8 @@
 		articleNum = Integer.parseInt(artnum);
 	}
 	
-	
-	
-	//GetArticleListService service = GetArticleListService.getInstance();
-	//Movie movieContent = service.getArticle(articleNum);
+	GetArticleListService service = GetArticleListService.getInstance();
+	Movie movieContent = service.getArticle(articleNum);
 	
 %>
 
@@ -24,7 +22,7 @@
 <meta charset="UTF-8">
     <title>DATE SHARE</title>
 </head>
-<link href="css/index.css" rel="stylesheet" type="text/css">
+<link href="../css/index.css" rel="stylesheet" type="text/css">
 <style>
 	#container {
 		margin: 20px auto;
@@ -44,15 +42,17 @@
         </div>
         <div id="content">
             <div id="container">
-            <%= articleNum %>
-            	<%-- <h2>파일경로 <%= movieContent.getM_path() %></h2>
+            	<h2>파일경로 <%= movieContent.getM_path() %></h2>
             	<h1>제목 <%= movieContent.getM_title() %></h1>
-            	<h3>작성자 <%= movieContent.getU_name() %> 
-            		작성일시<%= movieContent.getM_writedate() %> 
-            		좋아요 <%= movieContent.getM_like() %> 
+            	<h3>작성자 <%= movieContent.getU_name() %> <br>
+            		작성일시<%= movieContent.getM_writedate() %> <br> 
+            		좋아요 <%= movieContent.getM_like() %> <br>
             		조회수<%= movieContent.getM_hits() %></h3>
             	<p>내용 <%= movieContent.getM_content() %></p>
-            	<p>댓글</p> --%>
+            	<a href="confirmDelete.jsp?articleNum=<%= movieContent.getM_num() %>">
+            		<input type="button" value="삭제하기">
+            	</a>
+            	<p>댓글</p>
             </div>
         </div>
         <div id="footer">

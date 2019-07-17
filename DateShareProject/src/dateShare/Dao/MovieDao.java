@@ -27,7 +27,8 @@ public class MovieDao {
 	public int insert(Connection conn, Movie movietext) {
 	
 		PreparedStatement pstmt = null;
-		String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, default, default, default, default)";
+		String sql = "insert into movie values (null, 2, ?, ?, default, default, default, default, default)";
+		//String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, default, default, default, default)";
 		int resultCnt = 0;
 		
 		try {
@@ -85,7 +86,7 @@ public class MovieDao {
 		//반환형: list 타입 반환 
 		List<Movie> list = new ArrayList<Movie>();
 		
-		String sql = "select m_path, m_title, m_writedate, m_hits, m_like from movie order by m_num desc";
+		String sql = "select m_num, m_path, m_title, m_writedate, m_hits, m_like from movie order by m_num desc";
 		Statement stmt = null;
 		ResultSet rs = null;
 		
@@ -96,11 +97,12 @@ public class MovieDao {
 			while(rs.next()) {
 				Movie movie = new Movie();
 				
-				movie.setM_path(rs.getString(1));
-				movie.setM_title(rs.getString(2));
-				movie.setM_writedate(rs.getDate(3));
-				movie.setM_hits(rs.getInt(4));
-				movie.setM_like(rs.getInt(5));
+				movie.setM_num(rs.getInt(1));
+				movie.setM_path(rs.getString(2));
+				movie.setM_title(rs.getString(3));
+				movie.setM_writedate(rs.getDate(4));
+				movie.setM_hits(rs.getInt(5));
+				movie.setM_like(rs.getInt(6));
 				
 				list.add(movie);
 			}
@@ -118,7 +120,7 @@ public class MovieDao {
 		Movie movie = null;
 		ResultSet rs = null;
 		
-		String sql = "select m_path, m_title, u_name, m_writedate, m_like, m_hits, m_content from dateuser join movie using(u_num) where m_num=?";
+		String sql = "select m_num, m_path, m_title, u_name, m_writedate, m_like, m_hits, m_content from dateuser join movie using(u_num) where m_num=?";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -131,13 +133,14 @@ public class MovieDao {
 			while(rs.next()) {
 				movie = new Movie();
 				
-				movie.setM_path(rs.getString(1));
-				movie.setM_title(rs.getString(2));
-				movie.setU_name(rs.getString(3));
-				movie.setM_writedate(rs.getDate(4));
-				movie.setM_like(rs.getInt(5));
-				movie.setM_hits(rs.getInt(6));
-				movie.setM_content(rs.getString(7));
+				movie.setM_num(rs.getInt(1));
+				movie.setM_path(rs.getString(2));
+				movie.setM_title(rs.getString(3));
+				movie.setU_name(rs.getString(4));
+				movie.setM_writedate(rs.getDate(5));
+				movie.setM_like(rs.getInt(6));
+				movie.setM_hits(rs.getInt(7));
+				movie.setM_content(rs.getString(8));
 			}
 			
 		} catch (SQLException e) {
