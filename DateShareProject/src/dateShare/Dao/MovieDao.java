@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dateShare.Model.Movie;
+import jdbc.jdbcUtil;
 
 public class MovieDao {
 	
@@ -114,13 +115,14 @@ public class MovieDao {
 		return list;
 	}
 	
-	//4. 사용자가 클릭한 한 개의 게시글 출력을 위한 selectOne()
+	//4. selectOne() - 사용자가 클릭한 한 개의 게시글 출력/ 특정 게시물 존재여부 확인 (삭제 혹은 수정시)
 	public Movie selectOne(Connection conn, int articleNum) {
 		
 		Movie movie = null;
 		ResultSet rs = null;
 		
-		String sql = "select m_num, m_path, m_title, u_name, m_writedate, m_like, m_hits, m_content from dateuser join movie using(u_num) where m_num=?";
+		String sql = "select m_num, m_path, m_title, m_writedate, m_like, m_hits, m_content, "
+				+ " u_name, u_pw from dateuser join movie using(u_num) where m_num=?";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -136,11 +138,12 @@ public class MovieDao {
 				movie.setM_num(rs.getInt(1));
 				movie.setM_path(rs.getString(2));
 				movie.setM_title(rs.getString(3));
-				movie.setU_name(rs.getString(4));
-				movie.setM_writedate(rs.getDate(5));
-				movie.setM_like(rs.getInt(6));
-				movie.setM_hits(rs.getInt(7));
-				movie.setM_content(rs.getString(8));
+				movie.setM_writedate(rs.getDate(4));
+				movie.setM_like(rs.getInt(5));
+				movie.setM_hits(rs.getInt(6));
+				movie.setM_content(rs.getString(7));
+				movie.setU_name(rs.getString(8));
+				movie.setU_pw(rs.getString(9));
 			}
 			
 		} catch (SQLException e) {
@@ -149,6 +152,29 @@ public class MovieDao {
 		
 		return movie;
 		
+	}
+	
+	//5. delete() 게시물 삭제 
+	public int delete(Connection conn, int artnum) {
+		int resultCnt = 0;
+		
+		String sql = "delete from movie where m_num = ?";
+		PreparedStatement pstmt = null;
+		
+		try {		
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, artnum);
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//다른 예외 구문은 Service 페이지에서 처리하므로 catch 구문은 삭제, 여기서는 throw 로 처리 
+			jdbcUtil.close(pstmt);
+		}
+
+		return resultCnt;
 	}
 }
 

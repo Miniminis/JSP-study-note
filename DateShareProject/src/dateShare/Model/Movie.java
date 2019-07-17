@@ -26,11 +26,12 @@ public class Movie {
 	private int m_hits; //영화 게시물 조회수 
 	private int m_star; //영화별점 
 	
-	//유저 정보
+	//유저 정보 출력/확인을 위한 변수설정
 	private String u_name;
-
-	public Movie() {}
+	private String u_pw;
 	
+	//default 생성자 (for useBean)
+	public Movie() {}
 	
 	//게시물 상세 보기 페이지 출력을 위한 생성자
 	public Movie(String m_title, String m_content, Date m_writedate, int m_like, String m_path, int m_hits,
@@ -145,11 +146,24 @@ public class Movie {
 	
 	
 
+	public String getU_pw() {
+		return u_pw;
+	}
+
+	public void setU_pw(String u_pw) {
+		this.u_pw = u_pw; 
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [m_num=" + m_num + ", u_num=" + u_num + ", m_title=" + m_title + ", m_content=" + m_content
 				+ ", m_writedate=" + m_writedate + ", m_like=" + m_like + ", m_path=" + m_path + ", m_hits=" + m_hits
 				+ ", m_star=" + m_star + "]";
 	}
-
+	
+	// matchPassword() : dateUser에 저장된 비밀번호와 삭제폼에서 사용자 입력 비밀번호 비교
+	// 프로젝트 결합 후 --> dateuser - pw값으로 변경 
+	public boolean matchPassword(String pwChk) {
+		return u_pw.equals(pwChk);
+	}
 }

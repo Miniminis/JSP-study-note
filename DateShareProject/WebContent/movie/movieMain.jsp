@@ -38,7 +38,7 @@
             <div id="contentList" >      
             	<%
             		if(viewData.isEmpty()) {
-            			out.println("등록된 메시지가 없습니다.");
+            			out.println("등록된 게시글이 없습니다.");
             			
             		} else {
             			for(Movie movie : viewData.getMovieList()) {            			
