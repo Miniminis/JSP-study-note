@@ -28,7 +28,7 @@ public class MovieDao {
 	public int insert(Connection conn, Movie movietext) {
 	
 		PreparedStatement pstmt = null;
-		String sql = "insert into movie values (null, 2, ?, ?, default, default, default, default, default)";
+		String sql = "insert into movie values (null, 2, ?, ?, default, default, ?, default, default)";
 		//String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, default, default, default, default)";
 		int resultCnt = 0;
 		
@@ -37,6 +37,7 @@ public class MovieDao {
 			
 			pstmt.setString(1, movietext.getM_title());
 			pstmt.setString(2, movietext.getM_content());
+			pstmt.setString(3, movietext.getM_path());
 
 			resultCnt = pstmt.executeUpdate();
 			

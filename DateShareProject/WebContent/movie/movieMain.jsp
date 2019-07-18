@@ -19,8 +19,13 @@
 <meta charset="UTF-8">
     <title>DATE SHARE | MOVIE</title>
 </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="../css/index.css" rel="stylesheet" type="text/css">
-<style></style>
+<style>
+	body {
+		background-color: transparent;
+	}
+</style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
@@ -33,9 +38,9 @@
         <div id="nav">
             <%@ include file="../frame/nav.jsp" %>
         </div>
-        <div id="content">
-            <h1>movie main page</h1>      
-            <div id="contentList" >      
+        <div id="content" class ="album py-5">
+            <div id="contentList" class="container">   
+            	<div class="row">   
             	<%
             		if(viewData.isEmpty()) {
             			out.println("등록된 게시글이 없습니다.");
@@ -43,22 +48,34 @@
             		} else {
             			for(Movie movie : viewData.getMovieList()) {            			
             			%>          				
-            				<div>
-            					<h1>게시글리스트</h1>
-	            				<a href="movieContentView.jsp?articleNum=<%= movie.getM_num() %>">	            				
-	            					<div>사진<%= movie.getM_path() %></div>
-	            					<div>
-	            						제목 <%= movie.getM_title() %><br>
-	            						작성일시 <%= movie.getM_writedate() %>
-	            						조회수 <%= movie.getM_hits() %>
-	            						좋아요 <%= movie.getM_like() %>
-	            					</div>
-	            				</a>
+            				<div class="col-md-4">
+            				<div class="card mb-4 shadow-sm">
+	            				<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+	            					<image xlink:href="<%= movie.getM_path() %>" width="100%" height="225">
+	            				</svg> 
+	            				<div class="card-body">
+	            				 <p class="card-text">
+	            				 	제목 <%= movie.getM_title() %><br>
+	           						조회수 <%= movie.getM_hits() %>
+	           						좋아요 <%= movie.getM_like() %>
+	            				 </p> 
+	            				 <div class="d-flex justify-content-between align-items-center">
+					                <div class="btn-group">
+					                  <a href="movieContentView.jsp?articleNum=<%= movie.getM_num() %>">
+					                  	<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+					                  </a>
+					                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+					                </div>
+					                <small class="text-muted"><%= movie.getM_writedate() %></small>
+					              </div>        				            			
+		            			</div>
+            				</div>
             				</div>
             			<%
             			}
             		}
             	%>
+            	</div>
             </div>
 
             <a href="movieWrite.jsp"><input type="button" value="콘텐츠 등록하기"></a> 
@@ -70,3 +87,4 @@
     </div>
 </body>
 </html>
+

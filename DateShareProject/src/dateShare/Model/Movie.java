@@ -33,6 +33,15 @@ public class Movie {
 	//default 생성자 (for useBean)
 	public Movie() {}
 	
+	//게시글 등록을 위한 생성자 
+	public Movie(String m_title, String m_content, String m_path, int m_star) {
+		super();
+		this.m_title = m_title;
+		this.m_content = m_content;
+		this.m_path = m_path;
+		this.m_star = m_star;
+	}
+
 	//게시물 상세 보기 페이지 출력을 위한 생성자
 	public Movie(String m_title, String m_content, Date m_writedate, int m_like, String m_path, int m_hits,
 			String u_name) {
@@ -45,11 +54,11 @@ public class Movie {
 		this.m_hits = m_hits;
 		this.u_name = u_name;
 	}
-
-
 	
-	public Movie(int m_num, int u_num, String m_title, String m_content, Date m_writedate, int m_like, String m_path,
-			int m_hits, int m_star) {
+	
+	//전체 변수담은 생성자
+	public Movie(int m_num, int u_num, String m_title, String m_content, Date m_writedate, int m_like, 
+			String m_path, int m_hits, int m_star) {
 		this.m_num = m_num;
 		this.u_num = u_num;
 		this.m_title = m_title;
