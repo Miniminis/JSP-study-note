@@ -58,7 +58,7 @@ public class GetArticleListService {
 		return view;
 	}
 	
-	
+	//게시글 1개만 출력 
 	public Movie getArticle(int articleNum) {
 		Movie movie = null;
 		
@@ -69,8 +69,12 @@ public class GetArticleListService {
 			
 			MovieDao dao = MovieDao.getInstance();
 			
+			//게시글 1개 가져올때마다 조회수 증가 
+			dao.updateHit(conn, articleNum);
+			
+			//DB에서 articleNum 에 맞는 게시글 1개 가져옴
 			movie = dao.selectOne(conn, articleNum);
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

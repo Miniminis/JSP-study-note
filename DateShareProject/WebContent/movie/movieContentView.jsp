@@ -29,6 +29,8 @@
 	}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+</script>
 </head>
 <body>
 <div id="wrap">
@@ -50,7 +52,7 @@
             		조회수<%= movieContent.getM_hits() %></h3>
             	<p>내용 <%= movieContent.getM_content() %></p>
             	<a href="confirmDelete.jsp?articleNum=<%= movieContent.getM_num() %>">
-            		<input type="button" value="삭제하기"><br>
+            		<input type="button" value="삭제하기" id="deleteBtn"><br>
             	</a>
             	<a href="movieMain.jsp">
             		<input type="button" value="목록보기">

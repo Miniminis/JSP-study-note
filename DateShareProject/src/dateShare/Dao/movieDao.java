@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dateShare.Model.Movie;
+import jdbc.ConnectionProvider;
 import jdbc.jdbcUtil;
 
 public class MovieDao {
@@ -175,6 +176,28 @@ public class MovieDao {
 			jdbcUtil.close(pstmt);
 		}
 
+		return resultCnt;
+	}
+	
+	//6. 조회수 업데이트를 위한 updateHit() 
+	public int updateHit(Connection conn, int articleNum) {
+		int resultCnt = 0;
+		PreparedStatement pstmt;
+		
+		String sql = "update movie set m_hits = IFNULL(m_hits, 0) +1 where m_num=?";
+		//Oracle 
+		//String sql = "update movie set m_hits = NVL(m_hits, 0) + 1 where m_num=?";
+		try {
+			conn = ConnectionProvider.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, articleNum);
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return resultCnt;
 	}
 }
