@@ -64,7 +64,9 @@
 					                  <a href="movieContentView.jsp?articleNum=<%= movie.getM_num() %>">
 					                  	<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 					                  </a>
-					                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+					                  <a href="movieEditView.jsp?articleNum=<%= movie.getM_num() %>">
+					                  	<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+					                  </a>
 					                </div>
 					                <small class="text-muted"><%= movie.getM_writedate() %></small>
 					              </div>        				            			

@@ -200,6 +200,33 @@ public class MovieDao {
 		
 		return resultCnt;
 	}
+	
+	
+	  //7. 게시글 수정을 위한 editArticle() 
+	public int editArticle(Connection conn, Movie movietext, int aNum) { 
+		int resultCnt = 0;
+	  
+	  PreparedStatement pstmt; 
+	  String sql = "update movie set m_title = ?, m_path = ?, m_star = ?, m_content = ? where m_num = ? ";
+	  
+	  try {
+		pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, movietext.getM_title());
+		pstmt.setString(2, movietext.getM_path());
+		pstmt.setInt(3, movietext.getM_star());
+		pstmt.setString(4, movietext.getM_content());
+		pstmt.setInt(5, aNum);
+		
+		resultCnt = pstmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	  
+	  return resultCnt; 
+	}
+	
 }
 
 
