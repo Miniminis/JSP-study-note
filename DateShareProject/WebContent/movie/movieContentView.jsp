@@ -48,7 +48,7 @@
             	<h1>제목 <%= movieContent.getM_title() %></h1>
             	<h3>작성자 <%= movieContent.getU_name() %> <br>
             		작성일시<%= movieContent.getM_writedate() %> <br> 
-            		좋아요 <%= movieContent.getM_like() %> <br>
+            		좋아요  <br>
             		조회수<%= movieContent.getM_hits() %></h3>
             	<p>내용 <%= movieContent.getM_content() %></p>
             	<a href="confirmDelete.jsp?articleNum=<%= movieContent.getM_num() %>">

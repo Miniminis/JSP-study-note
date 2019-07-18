@@ -11,7 +11,6 @@ public class Movie {
 	M_TITLE     NOT NULL VARCHAR2(50)  
 	M_CONTENT   NOT NULL LONG          
 	M_WRITEDATE NOT NULL DATE          
-	M_LIKE      NOT NULL NUMBER        
 	M_PATH      NOT NULL VARCHAR2(255) 
 	M_HITS      NOT NULL NUMBER        
 	M_STAR      NOT NULL NUMBER */
@@ -21,7 +20,6 @@ public class Movie {
 	private String m_title; //영화제목
 	private String m_content; //영화내용
 	private Date m_writedate; //영화리뷰작성일시
-	private int m_like; //영화추천수
 	private String m_path; //영화이미지 파일경로
 	private int m_hits; //영화 게시물 조회수 
 	private int m_star; //영화별점 
@@ -43,13 +41,12 @@ public class Movie {
 	}
 
 	//게시물 상세 보기 페이지 출력을 위한 생성자
-	public Movie(String m_title, String m_content, Date m_writedate, int m_like, String m_path, int m_hits,
+	public Movie(String m_title, String m_content, Date m_writedate, String m_path, int m_hits,
 			String u_name) {
 		super();
 		this.m_title = m_title;
 		this.m_content = m_content;
 		this.m_writedate = m_writedate;
-		this.m_like = m_like;
 		this.m_path = m_path;
 		this.m_hits = m_hits;
 		this.u_name = u_name;
@@ -57,14 +54,13 @@ public class Movie {
 	
 	
 	//전체 변수담은 생성자
-	public Movie(int m_num, int u_num, String m_title, String m_content, Date m_writedate, int m_like, 
+	public Movie(int m_num, int u_num, String m_title, String m_content, Date m_writedate, 
 			String m_path, int m_hits, int m_star) {
 		this.m_num = m_num;
 		this.u_num = u_num;
 		this.m_title = m_title;
 		this.m_content = m_content;
 		this.m_writedate = m_writedate;
-		this.m_like = m_like;
 		this.m_path = m_path;
 		this.m_hits = m_hits;
 		this.m_star = m_star;
@@ -108,14 +104,6 @@ public class Movie {
 
 	public void setM_writedate(Date m_writedate) {
 		this.m_writedate = m_writedate;
-	}
-
-	public int getM_like() {
-		return m_like;
-	}
-
-	public void setM_like(int m_like) {
-		this.m_like = m_like;
 	}
 
 	public String getM_path() {
@@ -166,7 +154,7 @@ public class Movie {
 	@Override
 	public String toString() {
 		return "Movie [m_num=" + m_num + ", u_num=" + u_num + ", m_title=" + m_title + ", m_content=" + m_content
-				+ ", m_writedate=" + m_writedate + ", m_like=" + m_like + ", m_path=" + m_path + ", m_hits=" + m_hits
+				+ ", m_writedate=" + m_writedate + ", m_path=" + m_path + ", m_hits=" + m_hits
 				+ ", m_star=" + m_star + "]";
 	}
 	

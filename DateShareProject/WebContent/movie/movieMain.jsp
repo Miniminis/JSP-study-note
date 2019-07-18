@@ -1,5 +1,5 @@
+<%@page import="java.util.List"%>
 <%@page import="dateShare.Model.Movie"%>
-<%@page import="dateShare.Model.MovieListView"%>
 <%@page import="dateShare.service.movie.GetArticleListService"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,7 +10,7 @@
 	GetArticleListService service = GetArticleListService.getInstance();
 	
 	//응답 데이터의 결과 
-	MovieListView viewData = service.getArticleList(); 	
+	List<Movie> movieList = service.getArticleList();	
 %>
 
 <!DOCTYPE html>
@@ -42,11 +42,11 @@
             <div id="contentList" class="container">   
             	<div class="row">   
             	<%
-            		if(viewData.isEmpty()) {
+            		if(movieList.isEmpty()) {
             			out.println("등록된 게시글이 없습니다.");
             			
             		} else {
-            			for(Movie movie : viewData.getMovieList()) {            			
+            			for(Movie movie : movieList) {            			
             			%>          				
             				<div class="col-md-4">
             				<div class="card mb-4 shadow-sm">
@@ -57,7 +57,7 @@
 	            				 <p class="card-text">
 	            				 	제목 <%= movie.getM_title() %><br>
 	           						조회수 <%= movie.getM_hits() %>
-	           						좋아요 <%= movie.getM_like() %>
+	           						좋아요
 	            				 </p> 
 	            				 <div class="d-flex justify-content-between align-items-center">
 					                <div class="btn-group">

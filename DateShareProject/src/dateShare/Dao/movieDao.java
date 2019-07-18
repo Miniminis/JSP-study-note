@@ -29,8 +29,8 @@ public class MovieDao {
 	public int insert(Connection conn, Movie movietext) {
 	
 		PreparedStatement pstmt = null;
-		String sql = "insert into movie values (null, 2, ?, ?, default, default, ?, default, default)";
-		//String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, default, default, default, default)";
+		String sql ="insert into movie values(null, 2, ?, ?, default, ?, default, default)";
+		//String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, ?, default, default)";
 		int resultCnt = 0;
 		
 		try {
@@ -89,7 +89,7 @@ public class MovieDao {
 		//반환형: list 타입 반환 
 		List<Movie> list = new ArrayList<Movie>();
 		
-		String sql = "select m_num, m_path, m_title, m_writedate, m_hits, m_like from movie order by m_num desc";
+		String sql = "select m_num, m_path, m_title, m_writedate, m_hits from movie order by m_num desc";
 		Statement stmt = null;
 		ResultSet rs = null;
 		
@@ -105,7 +105,6 @@ public class MovieDao {
 				movie.setM_title(rs.getString(3));
 				movie.setM_writedate(rs.getDate(4));
 				movie.setM_hits(rs.getInt(5));
-				movie.setM_like(rs.getInt(6));
 				
 				list.add(movie);
 			}
@@ -123,8 +122,8 @@ public class MovieDao {
 		Movie movie = null;
 		ResultSet rs = null;
 		
-		String sql = "select m_num, m_path, m_title, m_writedate, m_like, m_hits, m_content, "
-				+ " u_name, u_pw from dateuser join movie using(u_num) where m_num=?";
+		String sql = " select m_num, m_path, m_title, m_writedate, m_hits, m_content, "
+				+ " u_name, u_pw from dateuser join movie using(u_num) where m_num=? ";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -141,11 +140,10 @@ public class MovieDao {
 				movie.setM_path(rs.getString(2));
 				movie.setM_title(rs.getString(3));
 				movie.setM_writedate(rs.getDate(4));
-				movie.setM_like(rs.getInt(5));
-				movie.setM_hits(rs.getInt(6));
-				movie.setM_content(rs.getString(7));
-				movie.setU_name(rs.getString(8));
-				movie.setU_pw(rs.getString(9));
+				movie.setM_hits(rs.getInt(5));
+				movie.setM_content(rs.getString(6));
+				movie.setU_name(rs.getString(7));
+				movie.setU_pw(rs.getString(8));
 			}
 			
 		} catch (SQLException e) {
@@ -230,7 +228,7 @@ public class MovieDao {
 }
 
 
-/* 9개
+/* 8개
  * 이름          널?       유형            
 ----------- -------- ------------- 
 M_NUM       NOT NULL NUMBER        
@@ -238,7 +236,6 @@ U_NUM       NOT NULL NUMBER 1
 M_TITLE     NOT NULL VARCHAR2(50)  
 M_CONTENT   NOT NULL LONG          
 M_WRITEDATE NOT NULL DATE          
-M_LIKE      NOT NULL NUMBER        
 M_PATH      NOT NULL VARCHAR2(255) 
 M_HITS      NOT NULL NUMBER        
 M_STAR      NOT NULL NUMBER */
