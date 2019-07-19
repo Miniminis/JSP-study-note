@@ -18,7 +18,7 @@ public class DeleteArticleService {
 	}
 	
 	//2. 필요한 매서드 정의 
-	public int deleteArticle(int artnum, String chkPw) throws ArticleNotFoundException, InvalidPasswordException, SQLException {
+	public int deleteArticle(int artnum) throws ArticleNotFoundException, SQLException {
 		int resultCnt = 0;
 		
 		//1. DB 연결 
@@ -29,7 +29,6 @@ public class DeleteArticleService {
 			
 			//게시글 삭제의 조건 
 			//1. 일치하는 게시글이 DB에 존재
-			//2. 사용자의 비밀번호와 일치 
 			
 			//트랜젝션 시작 - 잘못된 실행 결과시 rollback 할 수 있도록 
 			conn.setAutoCommit(false);
@@ -42,13 +41,6 @@ public class DeleteArticleService {
 			if(movie == null) {
 				throw new ArticleNotFoundException(artnum + "번 게시물이 존재하지 않습니다!");
 			} 
-			
-			//2. 만약 사용자의 비밀번호가 존재하지 않는다면 --> 로그인 처리에서 체크 
-			
-			//3. 만약 사용자의 비밀번호 != 입력된 비밀번호 값 
-			if(!movie.matchPassword(chkPw)) {
-				throw new InvalidPasswordException("일치하는 비밀번호가 없습니다!");
-			}
 			
 			//4. 이 모든 상황이 아니면 --> 게시글 삭제
 			resultCnt = dao.delete(conn, artnum);
@@ -65,14 +57,9 @@ public class DeleteArticleService {
 			jdbc.jdbcUtil.rollback(conn);
 			e.printStackTrace();
 			throw e;
-		} catch (InvalidPasswordException e) {
-			jdbc.jdbcUtil.rollback(conn);
-			e.printStackTrace();
-			throw e;
 		}
 		
 		return resultCnt;
 	}
-	
-	
+
 }

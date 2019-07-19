@@ -57,7 +57,7 @@
 	            				 <p class="card-text">
 	            				 	제목 <%= movie.getM_title() %><br>
 	           						조회수 <%= movie.getM_hits() %>
-	           						좋아요
+	           						좋아요 
 	            				 </p> 
 	            				 <div class="d-flex justify-content-between align-items-center">
 					                <div class="btn-group">
