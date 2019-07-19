@@ -48,6 +48,36 @@
 		};
 	}
 	
+	
+	//$('#aa').hide();
+	//$('#aa').show();
+	
+	$(document).ready(function(){
+		//alert($("#m_num").val());
+		$('#emptyLike').click(function(){
+			alert('좋아요');
+			
+			$.ajax({
+				url : 'getLike.jsp',  
+				data : {
+					m_num : $('#m_num').val(),
+					u_num : $('#u_num').val()
+				},
+				success : function(data){
+					alert(data);
+					$('#likeCnt').html(data);
+				},
+				complete : function(){
+					alert('에러발생?')
+				}
+				
+			});
+			
+		});
+		
+	});
+		
+	
 </script>
 </head>
 <body>
@@ -62,12 +92,15 @@
         </div>
         <div id="content">
             <div id="container">
+            	<input id="m_num" type="hidden" value="<%= movieContent.getM_num() %>">
+            	<input id="u_num" type="hidden" value="<%= user.getU_num() %>">
+            	
             	<h2>파일경로 <%= movieContent.getM_path() %></h2>
             	<h1>제목 <%= movieContent.getM_title() %></h1>
             	<h3>작성자 <%= movieContent.getU_name() %> <br>
             		작성일시<%= movieContent.getM_writedate() %> <br> 
-            		좋아요 <i id="emptyLike" class="far fa-heart"></i><br>
-            		<i id="fullLike" class="fas fa-heart"></i>
+            		좋아요 <a id="emptyLike"><i class="far fa-heart"></i><span id="likeCnt"></span></a>
+            		<input type="hidden"><i id="fullLike" class="fas fa-heart" ></i></input><br>
             		조회수<%= movieContent.getM_hits() %></h3>
             	<p>내용 <%= movieContent.getM_content() %></p>
            

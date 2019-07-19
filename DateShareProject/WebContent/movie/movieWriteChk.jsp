@@ -65,6 +65,9 @@
 		
 	}
 	
+	
+	
+	
 	Movie movietext = new Movie(mTitle, mContent, fileDBPath, mStar);
 	
 %>
