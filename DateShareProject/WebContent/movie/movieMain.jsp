@@ -11,6 +11,7 @@
 	
 	//응답 데이터의 결과 
 	List<Movie> movieList = service.getArticleList();	
+	
 %>
 
 <!DOCTYPE html>

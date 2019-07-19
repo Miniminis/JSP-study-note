@@ -1,6 +1,5 @@
 package filter;
 
-
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -11,55 +10,38 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 
-/**
- * Servlet Filter implementation class CharacterEncodingFilter
- */
-@WebFilter(
+/*@WebFilter(
 		urlPatterns = { "/*" }, 
 		initParams = { 
-				@WebInitParam(name = "encoding", value = "UTF-8")
-		})
+				@WebInitParam(name = "encoding", value = "utf-8")
+		})*/
 public class CharacterEncodingFilter implements Filter {
-
-	private String encoding;
 	
-    /**
-     * Default constructor. 
-     */
+	//필터 클래스는 반드시 init(), doFilter(), destroy() 모두를 오버라이딩 해야한다. 
+	
+	private String encode = null;
+
+	//default 생성자 
     public CharacterEncodingFilter() {
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Filter#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
+    
+    //
+    public void destroy() {
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
-		request.setCharacterEncoding(encoding);
 		
-		// pass the request along the filter chain
+		request.setCharacterEncoding(encode);
 		chain.doFilter(request, response);
+		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 		
-		encoding = fConfig.getInitParameter("encoding");
+		encode = fConfig.getInitParameter("encoding");
 		
-		if(encoding == null) {
-			encoding = "UTF-8";
+		if(encode == null) {
+			encode = "UTF-8";
 		}
 	}
 
