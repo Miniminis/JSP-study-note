@@ -40,7 +40,8 @@ public class DeleteArticleService {
 			
 			if(movie == null) {
 				throw new ArticleNotFoundException(artnum + "번 게시물이 존재하지 않습니다!");
-			} 
+			} else if(movie.get)
+			
 			
 			//4. 이 모든 상황이 아니면 --> 게시글 삭제
 			resultCnt = dao.delete(conn, artnum, uNum);
