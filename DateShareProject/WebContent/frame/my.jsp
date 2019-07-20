@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	session = request.getSession(false);
-	
 	LoginInfo user = (LoginInfo) session.getAttribute("userInfo");
 %>
 <div id="my">

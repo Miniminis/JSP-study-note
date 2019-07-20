@@ -11,9 +11,10 @@
 		articleNum = Integer.parseInt(artnum);
 	} 
 	
-	//수정 폼에 기존의 데이터를 넣어주기 위핸 getArticle();
+	//수정 폼에 기존의 데이터를 넣어주기 위해 getArticle();
 	GetArticleListService service = GetArticleListService.getInstance();
 	Movie movieContent = service.getArticle(articleNum);
+	
 %>
 
 <!DOCTYPE html>

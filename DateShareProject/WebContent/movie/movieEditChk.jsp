@@ -69,7 +69,11 @@
 		
 	}
 	
-	Movie movietext = new Movie(mTitle, mContent, fileDBPath, mStar);
+	//세션에서 회원정보 받아오기
+	session = request.getSession(false);
+	LoginInfo curuser = (LoginInfo) session.getAttribute("userInfo");
+	
+	Movie movietext = new Movie(curuser.getU_num(), mTitle, mContent, fileDBPath, mStar);
 
 	EditArticleService service = EditArticleService.getInstance();
 	int resultCnt = service.editArticle(movietext, aNum);

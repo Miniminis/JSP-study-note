@@ -1,3 +1,4 @@
+<%@page import="dateShare.Model.LoginInfo"%>
 <%@page import="dateShare.service.movie.ArticleNotFoundException"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="dateShare.service.movie.DeleteArticleService"%>
@@ -6,6 +7,10 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <%
+	//세션에서 회원정보 받아오기
+	session = request.getSession(false);
+	LoginInfo curuser = (LoginInfo) session.getAttribute("userInfo");
+	
 	//삭제하고자 하는 게시물 번호 받기 
 	int artnum = 0;
 	String mNumStr = request.getParameter("m_num");
@@ -21,7 +26,7 @@
 	
 	try {
 		DeleteArticleService service = DeleteArticleService.getInstance();
-		resultCnt = service.deleteArticle(artnum);
+		resultCnt = service.deleteArticle(artnum, curuser.getU_num());
 		chk = true;
 		out.print(artnum);
 	} catch (SQLException e) {

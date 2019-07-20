@@ -111,7 +111,8 @@
             	<input id="m_num" type="hidden" value="<%= movieContent.getM_num() %>">
             	<input id="u_num" type="hidden" value="<%= user.getU_num() %>">
             	
-            	<h2>파일경로 <%= movieContent.getM_path() %></h2>
+            	<image src="<%= movieContent.getM_path() %>" width="100%" height="225">
+            	
             	<h1>제목 <%= movieContent.getM_title() %></h1>
             	<h3>작성자 <%= movieContent.getU_name() %> <br>
             		작성일시<%= movieContent.getM_writedate() %> <br> 

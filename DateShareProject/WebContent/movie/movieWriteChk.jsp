@@ -11,7 +11,7 @@
 
 <%-- <jsp:useBean id="movietext" class="dateShare.Model.Movie" scope="request"/> --%>
 
-<%
+<% 
 	String mTitle = "";
 	String mPath = "";
 	int mStar = 0;
@@ -65,10 +65,11 @@
 		
 	}
 	
+	//세션에서 회원정보 받아오기
+	session = request.getSession(false);
+	LoginInfo curuser = (LoginInfo) session.getAttribute("userInfo");
 	
-	
-	
-	Movie movietext = new Movie(mTitle, mContent, fileDBPath, mStar);
+	Movie movietext = new Movie(curuser.getU_num(), mTitle, mContent, fileDBPath, mStar);
 	
 %>
 
