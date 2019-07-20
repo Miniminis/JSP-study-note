@@ -1,4 +1,5 @@
 <%@page import="dateShare.Model.Movie"%>
+<%@page import="dateShare.service.movie.GetLikeService"%>
 <%@page import="dateShare.service.movie.GetArticleListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,6 +15,13 @@
 	GetArticleListService service = GetArticleListService.getInstance();
 	Movie movieContent = service.getArticle(articleNum);
 	
+	
+	//좋아요 개수
+	int likeOriginCnt = 0;
+	
+	GetLikeService likeservice = GetLikeService.getInstance();
+	likeOriginCnt = likeservice.getLikeOrigin(articleNum); 
+	
 %>
 
 <!DOCTYPE html>
@@ -26,6 +34,14 @@
 <style>
 	#container {
 		margin: 20px auto;
+	}
+	#emptyLike {
+		cursor: pointer;
+	}
+	.transparent {
+		border-color: transparent; 
+		background-color: transparent;
+		display: inline;
 	}
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -49,13 +65,15 @@
 	}
 	
 	
-	//$('#aa').hide();
-	//$('#aa').show();
+	//$('#emptyLike').hide();
+	//$('#fullLike').show();
 	
 	$(document).ready(function(){
 		//alert($("#m_num").val());
+		//$('#fullLike').hide();
+		
 		$('#emptyLike').click(function(){
-			alert('좋아요');
+			//alert('좋아요');
 			
 			$.ajax({
 				url : 'getLike.jsp',  
@@ -64,13 +82,11 @@
 					u_num : $('#u_num').val()
 				},
 				success : function(data){
-					alert(data);
-					$('#likeCnt').html(data);
-				},
-				complete : function(){
-					alert('에러발생?')
-				}
-				
+					//alert(data);
+					$('#likeCnt').val(data);
+					//$('#emptyLike').hide();
+					//$('#fullLike').show();
+				}				
 			});
 			
 		});
@@ -99,8 +115,10 @@
             	<h1>제목 <%= movieContent.getM_title() %></h1>
             	<h3>작성자 <%= movieContent.getU_name() %> <br>
             		작성일시<%= movieContent.getM_writedate() %> <br> 
-            		좋아요 <a id="emptyLike"><i class="far fa-heart"></i><span id="likeCnt"></span></a>
-            		<input type="hidden"><i id="fullLike" class="fas fa-heart" ></i></input><br>
+            		좋아요 <a id="emptyLike"><i class="far fa-heart"></i></a>
+            			<a id="fullLike"><i class="fas fa-heart"></i></a>
+            		<input type="text" id="likeCnt" value="<%= likeOriginCnt %>" class="transparent">
+            		<br>
             		조회수<%= movieContent.getM_hits() %></h3>
             	<p>내용 <%= movieContent.getM_content() %></p>
            

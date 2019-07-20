@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import dateShare.Model.Movie;
 import jdbc.ConnectionProvider;
@@ -223,6 +224,101 @@ public class MovieDao {
 	}
 	  
 	  return resultCnt; 
+	}
+	
+	//동일게시물 좋아요 여부 체크 (1 또는 0 반환)
+	public int likeCheck(Connection conn, int mNum, int uNum) {
+		ResultSet rs = null;
+		int chk = 0;
+		
+		PreparedStatement pstmt;
+		String sql = "select count(*) from m_like where u_num=? and m_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uNum);
+			pstmt.setInt(2, mNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				chk = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		
+		return chk;
+	}
+	
+	//좋아요 개수 업데이트 likeUpdate() 
+	public void likeUpdate(Connection conn, int mNum, int uNum) {
+		//int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = "insert into m_like values(?, ?)"; //컬럼 순서 : u_num  m_num
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, uNum);
+			pstmt.setInt(2, mNum);
+			
+			//resultCnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//return resultCnt;
+	}
+	
+	//좋아요 테이블 행 삭제 likeDelete(conn, likeMap)
+	public void likeDelete(Connection conn, int mNum, int uNum) {		
+		//int resultCnt = 0;
+		
+		PreparedStatement pstmt; 
+		String sql = "delete from m_like where u_num=? and m_num=?"; //컬럼 순서 : u_num  m_num
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, uNum);
+			pstmt.setInt(2, mNum);
+			
+			//resultCnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//return resultCnt;
+	}
+	//좋아요 개수 출력을 위한 likeCnt() 
+	public int likeCnt(Connection conn, int mNum) {
+		ResultSet rs = null;
+		int totalLike = 0;
+		
+		PreparedStatement pstmt;
+		String sql = "select count(*) from m_like where m_num=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, mNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totalLike = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return totalLike;
 	}
 	
 }
