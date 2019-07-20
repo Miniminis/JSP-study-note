@@ -22,6 +22,10 @@
 	GetLikeService likeservice = GetLikeService.getInstance();
 	likeOriginCnt = likeservice.getLikeOrigin(articleNum); 
 	
+	//세션에서 회원정보 받아오기
+	session = request.getSession(false);
+	LoginInfo curuser = (LoginInfo) session.getAttribute("userInfo");
+	
 %>
 
 <!DOCTYPE html>
@@ -49,6 +53,7 @@
 <script>
 	
 	function deleteArticle(artnum) {
+		
 		if(confirm('정말로 삭제하시겠습니까? ')){
 			$.ajax ({
 				url: 'deleteArticle.jsp',
