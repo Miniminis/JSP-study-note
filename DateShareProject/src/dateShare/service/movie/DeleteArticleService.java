@@ -18,7 +18,7 @@ public class DeleteArticleService {
 	}
 	
 	//2. 필요한 매서드 정의 
-	public int deleteArticle(int artnum) throws ArticleNotFoundException, SQLException {
+	public int deleteArticle(int artnum, int uNum) throws ArticleNotFoundException, SQLException {
 		int resultCnt = 0;
 		
 		//1. DB 연결 
@@ -43,7 +43,7 @@ public class DeleteArticleService {
 			} 
 			
 			//4. 이 모든 상황이 아니면 --> 게시글 삭제
-			resultCnt = dao.delete(conn, artnum);
+			resultCnt = dao.delete(conn, artnum, uNum);
 			
 			//트랜젝션 종료 
 			conn.commit();

@@ -30,16 +30,17 @@ public class MovieDao {
 	public int insert(Connection conn, Movie movietext) {
 	
 		PreparedStatement pstmt = null;
-		String sql ="insert into movie values(null, 2, ?, ?, default, ?, default, default)";
-		//String sql = "insert into movie values (MOVIE_SEQ.nextval, 2, ?, ?, default, ?, default, default)";
+		String sql ="insert into movie values(null, ?, ?, ?, default, ?, default, default)";
+		//String sql = "insert into movie values (MOVIE_SEQ.nextval, ?, ?, ?, default, ?, default, default)";
 		int resultCnt = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, movietext.getM_title());
-			pstmt.setString(2, movietext.getM_content());
-			pstmt.setString(3, movietext.getM_path());
+			pstmt.setInt(1, movietext.getU_num());
+			pstmt.setString(2, movietext.getM_title());
+			pstmt.setString(3, movietext.getM_content());
+			pstmt.setString(4, movietext.getM_path());
 
 			resultCnt = pstmt.executeUpdate();
 			
@@ -156,15 +157,16 @@ public class MovieDao {
 	}
 	
 	//5. delete() 게시물 삭제 
-	public int delete(Connection conn, int artnum) {
+	public int delete(Connection conn, int artnum, int uNum) {
 		int resultCnt = 0;
 		
-		String sql = "delete from movie where m_num = ?";
+		String sql = "delete from movie where m_num=? and u_num=?";
 		PreparedStatement pstmt = null;
 		
 		try {		
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, artnum);
+			pstmt.setInt(2, uNum);
 			
 			resultCnt = pstmt.executeUpdate();
 			
@@ -201,12 +203,12 @@ public class MovieDao {
 	}
 	
 	
-	  //7. 게시글 수정을 위한 editArticle() 
+	//7. 게시글 수정을 위한 editArticle() 
 	public int editArticle(Connection conn, Movie movietext, int aNum) { 
 		int resultCnt = 0;
 	  
 	  PreparedStatement pstmt; 
-	  String sql = "update movie set m_title = ?, m_path = ?, m_star = ?, m_content = ? where m_num = ? ";
+	  String sql = "update movie set m_title = ?, m_path = ?, m_star = ?, m_content = ? where m_num = ? and u_num=? ";
 	  
 	  try {
 		pstmt = conn.prepareStatement(sql);
@@ -216,6 +218,7 @@ public class MovieDao {
 		pstmt.setInt(3, movietext.getM_star());
 		pstmt.setString(4, movietext.getM_content());
 		pstmt.setInt(5, aNum);
+		pstmt.setInt(6, movietext.getU_num());
 		
 		resultCnt = pstmt.executeUpdate();
 		

@@ -32,8 +32,9 @@ public class Movie {
 	public Movie() {}
 	
 	//게시글 등록을 위한 생성자 
-	public Movie(String m_title, String m_content, String m_path, int m_star) {
+	public Movie(int u_num, String m_title, String m_content, String m_path, int m_star) {
 		super();
+		this.u_num = u_num;
 		this.m_title = m_title;
 		this.m_content = m_content;
 		this.m_path = m_path;
