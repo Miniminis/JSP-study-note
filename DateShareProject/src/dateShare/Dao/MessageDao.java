@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dateShare.Model.Message;
-import jdbc.jdbcUtil;
+import jdbc.JdbcUtil;
 
 public class MessageDao {
 
@@ -211,7 +211,7 @@ public class MessageDao {
 
 		} finally {
 			// 어떤 처리(오류가 나던 안나던)가 되어도 실행됨
-			jdbcUtil.close(pstmt);
+			JdbcUtil.close(pstmt);
 		}
 
 		return resultCnt;

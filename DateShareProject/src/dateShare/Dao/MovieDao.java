@@ -11,7 +11,7 @@ import java.util.Map;
 
 import dateShare.Model.Movie;
 import jdbc.ConnectionProvider;
-import jdbc.jdbcUtil;
+import jdbc.JdbcUtil;
 
 public class MovieDao {
 	
@@ -24,6 +24,20 @@ public class MovieDao {
 	public static MovieDao getInstance() {
 		return dao;
 	}
+	
+
+	/* 8개
+	 * 이름          널?       유형            
+	----------- -------- ------------- 
+	M_NUM       NOT NULL NUMBER        
+	U_NUM       NOT NULL NUMBER 1       
+	M_TITLE     NOT NULL VARCHAR2(50)  
+	M_CONTENT   NOT NULL LONG          
+	M_WRITEDATE NOT NULL DATE          
+	M_PATH      NOT NULL VARCHAR2(255) 
+	M_HITS      NOT NULL NUMBER        
+	M_STAR      NOT NULL NUMBER */
+
 	
 	
 	//1. 게시글 등록을 위한 insert() 
@@ -85,13 +99,28 @@ public class MovieDao {
 		return totalCnt;
 	}
 	
+
+	/* 8개
+	 * 이름          널?       유형            
+	----------- -------- ------------- 
+	M_NUM       NOT NULL NUMBER        
+	U_NUM       NOT NULL NUMBER 1       
+	M_TITLE     NOT NULL VARCHAR2(50)  
+	M_CONTENT   NOT NULL LONG          
+	M_WRITEDATE NOT NULL DATE          
+	M_PATH      NOT NULL VARCHAR2(255) 
+	M_HITS      NOT NULL NUMBER        
+	M_STAR      NOT NULL NUMBER */
+
+	
 	//3. 게시글 리스트 출력을 위한 selectList() 
 	public List<Movie> selectList(Connection conn) {
 		
 		//반환형: list 타입 반환 
 		List<Movie> list = new ArrayList<Movie>();
 		
-		String sql = "select m_num, m_path, m_title, m_writedate, m_hits from movie order by m_num desc";
+		String sql = " select m_num, m_path, m_title, m_writedate, m_hits, u_name, m_star "
+				+ " from movie m join dateuser u using(u_num) order by m_num desc ";
 		Statement stmt = null;
 		ResultSet rs = null;
 		
@@ -107,6 +136,8 @@ public class MovieDao {
 				movie.setM_title(rs.getString(3));
 				movie.setM_writedate(rs.getDate(4));
 				movie.setM_hits(rs.getInt(5));
+				movie.setU_name(rs.getString(6));
+				movie.setM_star(rs.getInt(7));
 				
 				list.add(movie);
 			}
@@ -118,14 +149,14 @@ public class MovieDao {
 		return list;
 	}
 	
-	//4. selectOne() - 사용자가 클릭한 한 개의 게시글 출력/ 특정 게시물 존재여부 확인 (삭제 혹은 수정시)
+	//4. selectOne() - 사용자가 클릭한 한 개의 게시글 출력/ 특정 게시물 존재여부 확인/글쓴이와 로그인 사용자 비교 (삭제 혹은 수정시)
 	public Movie selectOne(Connection conn, int articleNum) {
 		
 		Movie movie = null;
 		ResultSet rs = null;
 		
-		String sql = " select m_num, m_path, m_title, m_writedate, m_hits, m_content, "
-				+ " u_name, u_pw from dateuser join movie using(u_num) where m_num=? ";
+		String sql = " select m_num, u_num, m_path, m_title, m_writedate, m_hits, m_content, u_name, u_pw, m_star "
+				+ "	from dateuser join movie using(u_num) where m_num=? ";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -139,13 +170,15 @@ public class MovieDao {
 				movie = new Movie();
 				
 				movie.setM_num(rs.getInt(1));
-				movie.setM_path(rs.getString(2));
-				movie.setM_title(rs.getString(3));
-				movie.setM_writedate(rs.getDate(4));
-				movie.setM_hits(rs.getInt(5));
-				movie.setM_content(rs.getString(6));
-				movie.setU_name(rs.getString(7));
-				movie.setU_pw(rs.getString(8));
+				movie.setU_num(rs.getInt(2));
+				movie.setM_path(rs.getString(3));
+				movie.setM_title(rs.getString(4));
+				movie.setM_writedate(rs.getDate(5));
+				movie.setM_hits(rs.getInt(6));
+				movie.setM_content(rs.getString(7));
+				movie.setU_name(rs.getString(8));
+				movie.setU_pw(rs.getString(9));
+				movie.setM_star(rs.getInt(10));
 			}
 			
 		} catch (SQLException e) {
@@ -174,7 +207,7 @@ public class MovieDao {
 			e.printStackTrace();
 		} finally {
 			//다른 예외 구문은 Service 페이지에서 처리하므로 catch 구문은 삭제, 여기서는 throw 로 처리 
-			jdbcUtil.close(pstmt);
+			JdbcUtil.close(pstmt);
 		}
 
 		return resultCnt;
@@ -185,8 +218,7 @@ public class MovieDao {
 		int resultCnt = 0;
 		PreparedStatement pstmt;
 		
-		String sql = "update movie set m_hits = IFNULL(m_hits, 0) +1 where m_num=?";
-		//Oracle 
+		String sql = "update movie set m_hits = IFNULL(m_hits, 0) +1 where m_num=?"; 
 		//String sql = "update movie set m_hits = NVL(m_hits, 0) + 1 where m_num=?";
 		try {
 			conn = ConnectionProvider.getConnection();
@@ -325,18 +357,3 @@ public class MovieDao {
 	}
 	
 }
-
-
-/* 8개
- * 이름          널?       유형            
------------ -------- ------------- 
-M_NUM       NOT NULL NUMBER        
-U_NUM       NOT NULL NUMBER 1       
-M_TITLE     NOT NULL VARCHAR2(50)  
-M_CONTENT   NOT NULL LONG          
-M_WRITEDATE NOT NULL DATE          
-M_PATH      NOT NULL VARCHAR2(255) 
-M_HITS      NOT NULL NUMBER        
-M_STAR      NOT NULL NUMBER */
-
-

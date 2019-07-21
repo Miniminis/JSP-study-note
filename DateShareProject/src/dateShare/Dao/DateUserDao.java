@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import dateShare.Model.DateUser;
-import jdbc.jdbcUtil;;
+import jdbc.JdbcUtil;;
 
 public class DateUserDao {
 

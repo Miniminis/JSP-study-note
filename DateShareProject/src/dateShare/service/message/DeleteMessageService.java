@@ -7,7 +7,7 @@ import dateShare.Dao.MessageDao;
 import dateShare.Model.Message;
 import dateShare.exception.message.MessageNotFoundException;
 import jdbc.ConnectionProvider;
-import jdbc.jdbcUtil;
+import jdbc.JdbcUtil;
 
 public class DeleteMessageService {
 	
@@ -52,11 +52,11 @@ public class DeleteMessageService {
 		} catch (SQLException e) {
 			//예외 발생시 rollback 처리를 해줌
 			//트렌젝션의 롤백처리 : 만들어놓은 메서드를 사용
-			jdbcUtil.rollback(conn);
+			JdbcUtil.rollback(conn);
 			e.printStackTrace();
 			throw e;
 		} catch (MessageNotFoundException e) {
-			jdbcUtil.rollback(conn);
+			JdbcUtil.rollback(conn);
 			e.printStackTrace();
 			throw e;
 		
