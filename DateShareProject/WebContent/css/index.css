@@ -18,6 +18,14 @@ a {
 	color: black;
 }
 
+body {
+	background-color: transparent;
+}
+
+#wrap {
+	background-color: transparent;
+}
+
 
 
 #main_wrap {
@@ -67,6 +75,7 @@ a {
 	list-style: none;
 	overflow: hidden;
 	color: black;
+    margin-bottom: 0;
 }
 
 #nav ul>li {
