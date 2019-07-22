@@ -1,21 +1,21 @@
 package dateShare.Model;
 
 public class LoginInfo {
-
+	
 	private int u_num;
 	private String u_id;
 	private String u_pw;
 	private String u_name;
-
-
+	
+	
 	public LoginInfo(int u_num, String u_id, String u_pw, String u_name) {
 		this.u_num = u_num;
 		this.u_id = u_id;
 		this.u_pw = u_pw;
 		this.u_name = u_name;
 	}
-
-
+	
+	
 	public int getU_num() {
 		return u_num;
 	}
@@ -40,5 +40,7 @@ public class LoginInfo {
 	public void setU_name(String u_name) {
 		this.u_name = u_name;
 	}
-
+	
+	
+	
 }
