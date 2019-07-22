@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	session = request.getSession(false);
+
+	boolean loginChk = false;
+
+	if (session.getAttribute("userInfo") != null) {
+		loginChk = true;
+	}
+
+	if (loginChk) {
+		response.sendRedirect("main.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +25,12 @@
 	<div id="wrap">
 		<div id="main_wrap">
 			<div id="header">
-				<%@include file="/frame/header.jsp" %>
+				<%@include file="frame/header.jsp" %>
 			</div>
 			<div id="content">
 				<div id="login_form_wrap">
 					<h1>LOGIN</h1>
-					<form action="user/loginPro.jsp" method="post">
+					<form action="loginPro.jsp" method="post">
 						<div>
 							ID<input class="input_t" type="text" name="u_id" required>
 						</div>
@@ -26,13 +39,13 @@
 						</div>
 						<div>
 							<input class="input_b" type="submit" value="로그인">
-							<a href="user/insertForm.jsp" class="input_ba">회원가입</a>
+							<a href="insertForm.jsp" class="input_ba">회원가입</a>
 						</div>
 					</form>
 				</div>
 			</div>
 			<div id="footer">
-				<%@include file="/frame/footer.jsp" %>
+				<%@include file="frame/footer.jsp" %>
 			</div>
 		</div>
 	</div>
