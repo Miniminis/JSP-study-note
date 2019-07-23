@@ -20,6 +20,8 @@
 
 	// 응답 데이터의 결과 
 	FoodListView viewData = service.getFoodListView(pageNumber);
+	
+	
 %>
 
 <!DOCTYPE html>
@@ -56,21 +58,18 @@ body {
 	color: #dddddd;
 }
 
-#h_title {
-	font-weight: bold;
-	font-size: 24px;
-	padding-left: 20px;
+#f_l {
+	width: 50%;
 }
 
-#writeBtn {
+#f_r {
+	width: 40%;
 	float: right;
-	margin-right: 20px;
 }
 
-#content_title {
-	padding-bottom: 30px;
+#d{
+	clear: both;
 }
-
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
@@ -87,12 +86,10 @@ body {
 			<div id="content" class="album py-5">
 
 				<div id="content_title">
-					<div id="h_title">
-						<i class="fas fa-utensils"></i> 맛집 공유 게시판
-						<p id="writeBtn">
-							<a href="writeForm.jsp"><input type="button" class="btn btn-sm btn-outline-secondary" value="글 등록하기"></a>
-						<p>
-					</div>
+					<h2>맛집 공유 게시판</h2>
+					<p id="writeBtn">
+						<a href="writeForm.jsp"><input type="button" class="btn btn-sm btn-outline-secondary" value="글 등록하기"></a>
+					<p>
 				</div>
 
 				<div id="contentList" class="container">
@@ -109,32 +106,20 @@ body {
 								<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
 	            					<a href="viewDetail.jsp?f_num=<%=food.getF_num()%>">
 	            						<image xlink:href="<%=food.getF_path()%>" width="100%" height="225">
+	            					
 									
 									</a>
 	            				</svg>
 								<div class="card-body">
 									<p class="card-text">
-									<div id="f_r">
 
-										<%
-											int yellowStar = food.getF_star() / 2;
-											int grayStar = food.getF_star() % 2;
-											for (int i = 0; i < yellowStar; i++) {
-										%>
-										<i class="fas fa-star yellow"></i>
-										<%
-											}
-											if (grayStar > 0) {
-										%>
-										<i class="fas fa-star gray"></i>
-										<%
-											}
-										%>
-									</div>
 
-									<br>
-									<!-- 제목 -->
+										<%-- 	별점 : <%= food.getF_star() %> --%>
+										<br>
+										<!-- 제목 -->
 									<p id="card_title"><%=food.getF_title()%>
+									<div>
+									
 									<div id="f_l">
 										<!-- 조회수 -->
 										<i class="far fa-eye"></i>
@@ -143,7 +128,25 @@ body {
 										<i class="fas fa-heart red"></i>
 										<%=food.getF_like()%>
 									</div>
-
+									<div id="f_r">
+										<%
+											//
+											int yellowStar = food.getF_star()/2;
+											int grayStar = food.getF_star()%2;
+											for (int i = 0; i < yellowStar ; i++) {
+										%>
+										<i class="fas fa-star yellow"></i>
+										<%
+											}
+											if(grayStar>0){
+											%>
+										<i class="fas fa-star gray"></i>
+										<%	
+											}
+										%>
+									</div>
+									
+									</div>
 									<div id="d" class="d-flex justify-content-between align-items-center">
 										<div class="btn-group"></div>
 										<small class="text-muted"><%=food.getF_writedate()%></small>

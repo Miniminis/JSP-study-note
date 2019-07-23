@@ -9,15 +9,9 @@
 <%@ page import="dateShare.service.food.WriteFoodService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-	//request.setCharacterEncoding("utf-8");
-%>
 <jsp:useBean id="food" class="dateShare.Model.Food" />
 <jsp:setProperty property="*" name="food" />
-<%
-	/* 	EditFoodService service = EditFoodService.getInstance();
-		int cnt = service.edit(food); */
-%>
+
 <%
 	int f_num = 0;
 	int u_num = 0;
@@ -82,19 +76,89 @@
 	EditFoodService service = EditFoodService.getInstance();
 	int cnt = service.edit(foodFile);
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DATE SHARE | FOOD</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="../css/index.css" rel="stylesheet" type="text/css">
+<script src="https://kit.fontawesome.com/8653072c68.js"></script>
+<style>
+body {
+	background-color: transparent;
+}
+
+#content_title h2, #content_title p {
+	display: inline-block;
+}
+
+.red {
+	color: #FF7B7B;
+}
+
+#card_title {
+	font-size: 16px;
+}
+
+.yellow {
+	color: #FBAB00;
+}
+
+.gray {
+	color: #dddddd;
+}
+
+
+
+#writeBtn {
+	float: right;
+	margin-right: 20px;
+}
+
+#h_title{
+	padding: 20px 0;
+	font-weight: bold;
+}
+#content_title {
+	padding-bottom: 30px;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 </head>
 <body>
-	<h1> u넘:
-		<%=u_num%>
-		글번호 :
-		<%=f_num%>
-		<%=cnt > 0 ? "게시글을 수정하였습니다" : "게시글 수정 실패"%>
-	</h1>
-	<a href="foodList.jsp">목록보기</a>
+	<div id="wrap">
+		<div id="main_wrap">
+			<div id="header">
+				<%@ include file="../frame/my.jsp"%>
+				<%@ include file="../frame/header.jsp"%>
+			</div>
+			<div id="nav">
+				<%@ include file="../frame/nav.jsp"%>
+			</div>
+			<div id="content" class="album py-5">
+				<div id="content_title">
+					<div id="h_title">
+						<i class="fas fa-utensils"></i> 
+						맛집 공유 게시판 | 수정하기
+					</div>
+				</div>
+					<br>
+					<center>
+					<h3><%= cnt > 0 ? "게시글을 수정하였습니다!٩(*´ ꒳ `*)۶" : "게시글 수정 실패"%></h3>
+					<br>
+					<a href="foodList.jsp">목록으로</a>
+					</center>
+				</div>
+			</div>
+			<div id="footer">
+				<%@ include file="../frame/footer.jsp"%>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
+
