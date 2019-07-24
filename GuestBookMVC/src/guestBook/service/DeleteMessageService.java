@@ -3,13 +3,36 @@ package guestBook.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import guestBook.Model.Message;
 import guestBook.dao.MessageDao;
 import jdbc.ConnectionProvider;
 import jdbc.jdbcUtil;
 
-public class DeleteMessageService {
+public class DeleteMessageService implements GuestBookService {
 
+	@Override
+	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
+		
+		String viewname = "/WEB-INF/view/p05delResult.jsp"; //결과 반환할 뷰 정의 
+		int resultCnt = 0; //삭제 실행 결과담을 변수 설정 
+		
+		//1. delForm 에서 받아온 데이터 인코딩 + 파라미터로 받기 
+		//2. Connection 객체 정의 
+		//3. DAO 호출  
+		//4. 사용자 비밀번호 비교 
+		//5. resultCnt 반환 --> 파라미터 페이지로 전달 
+		
+		
+		return viewname;
+	}
+	
+	
+	
+	
+	/*
 	//DAO 매서드 호출 
 	//1. select - 특정 게시물을 선택하여 
 	//2. delete - 삭제처리 
@@ -81,7 +104,6 @@ public class DeleteMessageService {
 		
 		return resultCnt;
 		
-	}
-	 
+	}*/ 
 
 }

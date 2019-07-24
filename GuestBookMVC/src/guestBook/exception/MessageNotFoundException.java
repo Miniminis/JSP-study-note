@@ -1,4 +1,4 @@
-package guestBook.service;
+package guestBook.exception;
 
 public class MessageNotFoundException extends Exception {
 	

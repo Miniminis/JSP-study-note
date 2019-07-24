@@ -149,6 +149,7 @@ public class MessageDao {
 			
 			while(rs.next()) {
 				Message msg = new Message();
+				
 				msg.setMessage_id(rs.getInt(1));
 				msg.setGname(rs.getString(2));
 				msg.setGpassword(rs.getString(3));

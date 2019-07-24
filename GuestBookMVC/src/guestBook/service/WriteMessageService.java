@@ -13,6 +13,58 @@ import jdbc.ConnectionProvider;
 
 public class WriteMessageService implements GuestBookService {
 	
+	@Override
+	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
+		
+	//1. 응답 view 지정 
+	String viewpage = "/WEB-INF/view/p02writeMessage.jsp";
+	
+	//응답 view 로 전달할 결과 데이터 
+	//데이터 베이스에 데이터 저장
+	//데이터를 받기 
+	
+	//1. 사용자 입력데이터 받기 
+	try { //추상매서드 오버라이딩의 경우에는 원래 가지고 있는것보다 예외처리가 많으면 안됨 --> throw 로 예외처리 불가 
+		request.setCharacterEncoding("utf-8");
+	} catch (UnsupportedEncodingException e) {
+		e.printStackTrace();
+	}
+	
+	String gname = request.getParameter("gname");
+	String gpassword = request.getParameter("gpassword");
+	String gmessage = request.getParameter("gmessage");
+	
+	System.out.println("입력폼에서 서비스클래스까지 넘어옴 : "+gname);
+	
+	//2. Message 객체 생성
+	Message message = new Message(10, gname, gpassword, gmessage);
+	
+	System.out.println("message객체에 잘 저장되었나 확인 : "+ message.getGname()+"||"+message.getGpassword()+"||"+message.getGmessage());
+	
+	//3. DAO 생성, Connection 생성 
+	MessageDao dao = MessageDao.getInstance();	
+	Connection conn; //DAO 실행을 위한 connection 객체 생성 
+	
+	int resultCnt = 0; //실행결과 반환
+	
+	try {
+		conn = ConnectionProvider.getConnection();
+		
+		//4. insert() 실행 
+		resultCnt = dao.insert(conn, message);
+		
+		System.out.println("인코딩확인 : "+gname);
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	//5. 결과 데이터 request 속성에 저장 
+	request.setAttribute("resultCnt", resultCnt);
+	
+	return viewpage;
+}
+	
 	//COMMAND PATTERN 에서는 싱글톤 처리하면 안됨!!!! 
 	/*//싱글톤 처리 
 	//1. private 생성자 
@@ -57,54 +109,6 @@ public class WriteMessageService implements GuestBookService {
 		//write() 를 호출한 writeMessage.jsp 페이지로 resultCnt 값이 전달됨 
 	}*/
 
-	@Override
-	public String getViewName(HttpServletRequest request, HttpServletResponse response) {
-		
-		//1. 응답 view 지정 
-		String viewpage = "/WEB-INF/view/p02writeMessage.jsp";
-		
-		//응답 view 로 전달할 결과 데이터 
-		//데이터 베이스에 데이터 저장
-		//데이터를 받기 
-		
-		//1. 사용자 입력데이터 받기 
-		try { //추상매서드 오버라이딩의 경우에는 원래 가지고 있는것보다 예외처리가 많으면 안됨 --> throw 로 예외처리 불가 
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		
-		String gname = request.getParameter("gname");
-		String gpassword = request.getParameter("gpassword");
-		String gmessage = request.getParameter("gmessage");
-		
-		System.out.println("나와랏0"+gname);
-		
-		//2. Message 객체 생성
-		Message message = new Message(10, gname, gpassword, gmessage);
-		
-		System.out.println("나와랏1"+message.getGname());
-		
-		//3. DAO 생성, Connection 생성 
-		MessageDao dao = MessageDao.getInstance();	
-		Connection conn; //DAO 실행을 위한 connection 객체 생성 
-		
-		int resultCnt = 0; //실행결과 반환
-		
-		try {
-			conn = ConnectionProvider.getConnection();
-			
-			//4. insert() 실행 
-			resultCnt = dao.insert(conn, message);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		//5. 결과 데이터 request 속성에 저장 
-		request.setAttribute("resultCnt", resultCnt);
-		
-		return viewpage;
-	}
+	
 
 }
