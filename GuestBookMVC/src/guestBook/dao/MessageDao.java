@@ -37,7 +37,7 @@ public class MessageDao {
 	//1. insert 기능 : 게시글 추가기능
 	public int insert(Connection conn, Message message) {
 		
-		String sql = "insert into testdb.GUESTBOOK_MESSAGE (GUEST_NAME, PASSWORD, MESSAGE) values (?,?,?)";
+		String sql = "insert into GUESTBOOK_MESSAGE values (null, ?, ?, ?)";
 		//String sql = "insert into guestbook_message (message_id, gname, gpassword, gmessage) values (GM_MID_SEQ.nextval, ?,?,?)";
 		PreparedStatement pstmt = null;		
 		int resultCnt = 0; 
@@ -143,9 +143,7 @@ public class MessageDao {
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
-			//pstmt.setInt(1, endRow);
-			//pstmt.setInt(2, startRow);
-			pstmt.setInt(1, endRow);
+			pstmt.setInt(1, startRow-1);
 			pstmt.setInt(2, 3);
 			rs = pstmt.executeQuery(); //rs 는 전체 게시물 리스트를 3행마다 쪼갠 3행짜리 표를 갖게 된다.
 			

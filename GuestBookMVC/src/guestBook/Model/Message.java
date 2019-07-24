@@ -10,8 +10,18 @@ public class Message {
 	private String gmessage;
 	
 	//default 생성자 
-	public Message() {}
-	
+	public Message() {}	
+
+	public Message(int message_id, String gname, String gpassword, String gmessage) {
+		super();
+		this.message_id = message_id;
+		this.gname = gname;
+		this.gpassword = gpassword;
+		this.gmessage = gmessage;
+	}
+
+
+
 	//getters & setters 
 	public int getMessage_id() {
 		return message_id;

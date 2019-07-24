@@ -3,9 +3,12 @@ package guestBook.controller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -13,6 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import guestBook.service.GuestBookService;
 
 /**
  * Servlet implementation class FrontController
@@ -23,11 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 				@WebInitParam(name = "config", value = "/WEB-INF/commandService.properties")
 		})
 public class FrontController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public FrontController() {
-        super();
-    }
+	
+	private Map<String, GuestBookService> commands = new HashMap<String, GuestBookService>();
 
 
 	public void init(ServletConfig config) throws ServletException {
@@ -51,8 +53,34 @@ public class FrontController extends HttpServlet {
 		
 		Iterator itr = prop.keySet().iterator();
 		
-		while(itr.hasNext()) {
-			System.out.println(itr.next());
+		while(itr.hasNext()) {			
+			
+			String command = (String)itr.next();  //사용자 요청 uri 
+			String serviceClassName = prop.getProperty(command); //그에 대응되는 서비스 클래스의 이름
+			// command = /guestWriteForm,  serviceClassName = guestBook.service.WriteFormService 
+			
+			//System.out.println(command+" 커맨드와 서비스1 "+serviceClassName);
+			//println(itr.next())  --> next() 매서드가 실행되기 때문에 쓰면 안됨. 대신 변수에 담아서 출력하는건 괜찮.
+			//		--> 이 경우에는 command 를 출력해보는게 좋음 
+			try {
+				//prop에 있는 클래스 이름으로 인스턴스 생성
+				
+				System.out.println(command+" 커맨드와 서비스2 "+serviceClassName);
+				Class serviceClass = Class.forName(serviceClassName);
+				GuestBookService service = (GuestBookService) serviceClass.newInstance(); //object 타입 GuestBookService타입으로 형변환
+				
+				//commands Map 에 저장 <String, GuestBookService>
+				commands.put(command, service);
+				
+				//System.out.println(command+" 커맨드와 서비스3 "+ service);
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -65,7 +93,7 @@ public class FrontController extends HttpServlet {
 	}
 	
 	//do or post 두 방식 모두 process 매서드로 처리
-	private void process(HttpServletRequest request, HttpServletResponse response) {
+	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*
 		 * //1. 사용자 요청 분석 
 		 * 		- 가능한 사용자 요청 목록  --> 사용자요청경로=내부서비스경로
@@ -78,8 +106,33 @@ public class FrontController extends HttpServlet {
 		 * 		- 각 서비스의 실행 결과는 return viewpage 
 		 * //2. 사용자 요청에 맞는 모델 실행 (서비스, DAO, 모델 실행 ) --> view 페이지 반환 
 		 * //3. view 페이지로 포워딩
-		 */		
+		 */	
 		
+		
+		//1. 사용자 요청 분석 
+		String commanduri = request.getRequestURI(); //		/guest/guestWriteForm/
+		
+		
+		
+		if(commanduri.indexOf(request.getContextPath()) == 0) {
+			commanduri = commanduri.substring(request.getContextPath().length()); // /guestWriteForm
+		}
+		
+		//System.out.println("commanduri는 "+commanduri); //출력결과: /guest/guestWriteForm
+		
+		//2. 사용자 요청에 맞는 모델 실행 (서비스, DAO, 모델 실행 ) --> view 페이지 반환 
+		String viewpage = "/WEB-INF/view/null.jsp";
+		
+		GuestBookService service = commands.get(commanduri); //반환할 것이 없다면 null 값을 반환하기도 한다.
+		
+		if(service != null) {
+			viewpage = service.getViewName(request, response);			
+		}
+		
+		
+		//3. view 페이지로 포워딩
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewpage);
+		dispatcher.forward(request, response);
 	}
 
 
