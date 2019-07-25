@@ -140,7 +140,7 @@ public class FrontController extends HttpServlet {
 		GuestBookService service = commands.get(commanduri); //반환할 것이 없다면 null 값을 반환하기도 한다.
 		//commanduri 는 key 값으로 사용되어 get() 매서드를 통해 최종적으로 해당 key 값에 맞는 서비스 클래스를 반환한다. 
 		
-		if(service != null) { //만약에 해당 서비스가 있다면 --> 서비스 인터페이스의 getViewName() 결과값을 viewpage로 설정 ㄴ
+		if(service != null) { //만약에 해당 서비스가 있다면 --> 서비스 인터페이스의 getViewName() 결과값을 viewpage로 설정
 			viewpage = service.getViewName(request, response);  			
 		}
 		
