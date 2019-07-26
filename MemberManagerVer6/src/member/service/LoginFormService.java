@@ -3,6 +3,8 @@ package member.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.LoginInfo;
+
 public class LoginFormService implements MemberService {
 
 	@Override
@@ -10,6 +12,12 @@ public class LoginFormService implements MemberService {
 		
 		String viewpage="/WEB-INF/member/login.jsp";
 		
-		return viewpage;
+		LoginInfo loginInfo = (LoginInfo) request.getSession(false).getAttribute("LoginInfo");
+		
+		if(loginInfo != null) {
+			viewpage = "/WEB-INF/member/anotherLogin.jsp";
+		}
+		
+		return viewpage; 
 	}
 }

@@ -89,4 +89,18 @@ public class Member {
 		return "Member [idx=" + idx + ", userid=" + userid + ", userpw=" + userpw + ", username=" + username
 				+ ", userphoto=" + userphoto + ", regdate=" + regdate + "]";
 	}
+	
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(userid, username, userphoto, regdate); 
+	}
+	
+	//비밀번호 검사 
+	public boolean pwChk(String pw) {
+		//DB에서 받아온 데이터, 사용자 입력값 검사 
+		//1. DB에서 객체에 저장이 잘 안되었느지
+		//2. DB에 저장된 값에는 공백 문자열이 없는지
+		//3. DB에 저장된 값과 사용자의 입력값이 일치하는지 검사 필요 
+		return userpw !=null && userpw.trim().length()>0 && userpw.equals(pw);
+	}
+	
 }

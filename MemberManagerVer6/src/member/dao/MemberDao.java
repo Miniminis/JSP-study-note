@@ -128,40 +128,40 @@ public class MemberDao {
 	}
 	
 	//로그인 확인을 위한 selectOne 매서드 
-	public LoginInfo selectOne(Connection conn, String userid, String userpw) {
+	public Member selectOne(Connection conn, String userid) {
 		
-		String sql = "select userid, userpw, username, userphoto, regdate from memberinfo where userid=?and userpw =?";
+		String sql = "select * from memberinfo where userid=?";
 		PreparedStatement pstmt = null;
 		
 		ResultSet rs = null;
 		
-		LoginInfo loginMember = new LoginInfo();
+		Member member = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
-			pstmt.setString(2, userpw);
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				System.out.println("1"+rs.getString(1));
-				System.out.println("2"+rs.getString(2));
-							
-				loginMember.setUserid(rs.getString(1));
-				loginMember.setUserpw(rs.getString(2));
-				loginMember.setUsername(rs.getString(3));
-				loginMember.setUserphoto(rs.getString(4));
-				loginMember.setRegdate(rs.getDate(5));
+			if(rs !=null && rs.next()) {
+				System.out.println("1 "+rs.getString(2));
 				
-				System.out.println("3"+loginMember.toString());
+				member = new Member();
+				
+				member.setUserid(rs.getString(2));
+				member.setUserpw(rs.getString(3));
+				member.setUsername(rs.getString(4));
+				member.setUserphoto(rs.getString(5));
+				member.setRegdate(rs.getDate(6));
+				
+				System.out.println("2 "+member.toString());
 			}			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	
-		return loginMember;
+		return member;
 	}
 	
 	
