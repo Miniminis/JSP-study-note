@@ -3,6 +3,8 @@ package member.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.LoginInfo;
+
 public class DeleteFormService implements MemberService {
 
 	@Override

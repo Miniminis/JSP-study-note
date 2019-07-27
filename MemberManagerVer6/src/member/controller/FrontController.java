@@ -69,7 +69,7 @@ public class FrontController extends HttpServlet {
 			//*** println(itr.next())  --> next() 매서드가 실행되기 때문에 쓰면 안됨. 대신 변수에 담아서 출력하는건 괜찮.
 			//		--> 이 경우에는 command 를 출력해보는게 좋음 
 			//확인
-			System.out.println("현재 command는? "+command);
+			System.out.println("Iterator 시작 - 현재 command는? "+command);
 			
 			try {
 				//prop에 있는 클래스 이름으로 인스턴스 생성
