@@ -15,7 +15,7 @@ public class LoginFormService implements MemberService {
 		LoginInfo loginInfo = (LoginInfo) request.getSession(false).getAttribute("LoginInfo");
 		
 		if(loginInfo != null) {
-			viewpage = "/WEB-INF/member/anotherLogin.jsp";
+			viewpage = "/WEB-INF/member/alreadyLogin.jsp";
 		}
 		
 		return viewpage; 

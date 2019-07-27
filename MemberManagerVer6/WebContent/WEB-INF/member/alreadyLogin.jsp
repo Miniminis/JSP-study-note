@@ -14,6 +14,7 @@
 <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="static/default.css" rel="stylesheet" type="text/css">
+<link href="static/login.css" rel="stylesheet" type="text/css">
 
 <style>
 	.mb-auto {

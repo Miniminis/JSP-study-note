@@ -16,10 +16,6 @@
 
 <link href="static/default.css" rel="stylesheet" type="text/css">
 <style>
-	
-	.carousel {
-	 	height: 100%;
-	}
 </style>
 </head>
 
