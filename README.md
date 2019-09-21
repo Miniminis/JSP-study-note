@@ -1,4 +1,5 @@
 # JSP Self-Study Record
+> JSP 공부 기록 + 프로젝트 
 
 ## Project
 
@@ -33,6 +34,13 @@
   * 게시글 수정 및 삭제 시 회원검사 추가 
 * v3 
   * 전체 프로젝트 통합 
+
+### 스토리 아프리카 - 아프리카를 사랑하는 모든 사람들을 위한 플랫폼
+v6부터 별도의 Repository 에서 관리 
+<br>
+
+[LINK](https://github.com/Miniminis/Story-africa-project)
+
 
 ## JSP Basic Concept Tree
 <img src="https://github.com/Miniminis/JSP/blob/master/JSP(Java%20Server%20Page).png">
