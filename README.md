@@ -16,7 +16,7 @@
 * `Ajax`
 
 ##### 버전
-* 자세한 사항 : 커밋 내역 참조 
+* 자세한 사항 : 본 repository의 커밋 내역 참조 
 * v1
   * 프로젝트 전체 구조 설정
   * 테이블 매핑할 모델 생성 
@@ -36,11 +36,11 @@
   * 전체 프로젝트 통합 
 
 ### 스토리 아프리카 - 아프리카를 사랑하는 모든 사람들을 위한 플랫폼
-v6부터 별도의 Repository 에서 관리 
-<br>
-
-[LINK](https://github.com/Miniminis/Story-africa-project)
-
+* 자세한 버전관리내역은 본 repository의 커밋을 참고
+* v1 ~ v5 : [소스코드](https://github.com/Miniminis/JSP-study-note/tree/master/MemberManager) 
+* v6 : [소스코드](https://github.com/Miniminis/JSP-study-note/tree/master/MemberManagerVer6)
+* v7 ~ : [소스코드](https://github.com/Miniminis/Story-africa-project)
+(v7부터 별도의 Repository 에서 관리중)
 
 ## JSP Basic Concept Tree
 <img src="https://github.com/Miniminis/JSP/blob/master/JSP(Java%20Server%20Page).png">
