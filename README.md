@@ -3,8 +3,8 @@
 
 ## Project
 
-### 연인들을 위한 데이트 코스 공유 플랫폼, DateShare
-##### 영화 추천 게시판 제작
+### [연인들을 위한 데이트 코스 공유 플랫폼, DateShare](https://github.com/Miniminis/Date-Share-Project)
+##### [영화 추천 게시판 제작](https://github.com/Miniminis/JSP-study-note/tree/master/DateShareProject)
 ##### 기술
 * `HTML5`
 * `CSS3`
