@@ -3,7 +3,7 @@
 
 ## Project
 
-### [연인들을 위한 데이트 코스 공유 플랫폼, DateShare](https://github.com/Miniminis/Date-Share-Project)
+### Project 1. [연인들을 위한 데이트 코스 공유 플랫폼, DateShare](https://github.com/Miniminis/Date-Share-Project)
 ##### [영화 추천 게시판 제작](https://github.com/Miniminis/JSP-study-note/tree/master/DateShareProject)
 ##### 기술
 * `HTML5`
@@ -35,12 +35,16 @@
 * v3 
   * 전체 프로젝트 통합 
 
-### 스토리 아프리카 - 아프리카를 사랑하는 모든 사람들을 위한 플랫폼
+<hr>
+
+### Project 2. 스토리 아프리카 - 아프리카를 사랑하는 모든 사람들을 위한 플랫폼
 * 자세한 버전관리내역은 본 repository의 커밋을 참고
 * v1 ~ v5 : [소스코드](https://github.com/Miniminis/JSP-study-note/tree/master/MemberManager) 
 * v6 : [소스코드](https://github.com/Miniminis/JSP-study-note/tree/master/MemberManagerVer6)
 * v7 ~ : [소스코드](https://github.com/Miniminis/Story-africa-project)
 (v7부터 별도의 Repository 에서 관리중)
+
+<hr>
 
 ## JSP Basic Concept Tree
 <img src="https://github.com/Miniminis/JSP/blob/master/JSP(Java%20Server%20Page).png">
